@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncre_system_idea.DAO.LoginDAO">
+
+    <!-- mapper接口要和映射文件保持两个一致
+       1.mapper接口的全类名和映射文件的namespace一致
+       2.mapper接口的方法名要和映射文件的sql的id保持一致
+       -->
+
+    <select id="selectOne" resultType="com.example.ncre_system_idea.pojo.Admin">
+        select * from Admin where loginName=#{loginName}
+    </select>
+</mapper>
