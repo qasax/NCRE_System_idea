@@ -5,8 +5,8 @@ import com.example.ncre_system_idea.pojo.Admin;
 import com.example.ncre_system_idea.pojo.LoginBody;
 import com.example.ncre_system_idea.tils.IdentifyCodeUtils;
 
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
