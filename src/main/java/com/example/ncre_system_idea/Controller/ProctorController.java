@@ -18,14 +18,14 @@ public class ProctorController {
     ProctorService proctorService;
     @RequestMapping("/aLLProctors")
     @ResponseBody
-    public List<Proctor> selectALL(int pageNum, int pageSize){
+    public PageInfo<Proctor> selectALL(int pageNum, int pageSize,String sortProp,String sortOrder,boolean isSearch,String optionValue,String searchValue){
 
-       return proctorService.selectAll(pageNum,pageSize);
+        return proctorService.selectAll(pageNum,pageSize,sortProp,sortOrder,isSearch,optionValue,searchValue);
     }
-    @RequestMapping("/aLLProctors1")
+    @RequestMapping("/deleteOne")
     @ResponseBody
-    public PageInfo<Proctor> selectALL1(int pageNum, int pageSize){
+    public String deleteOne(int id){
 
-        return proctorService.selectAll1(pageNum,pageSize);
+        return proctorService.deleteOne(id);
     }
 }

@@ -8,7 +8,11 @@ import java.util.List;
 
 @Repository
 public interface ProctorDAO  {
- List<Proctor> selectAll( @Param("offset") int offset,@Param("pageSize") int pageSize);
+ List<Proctor> selectAll();
 
- List<Proctor> selectAll1();
+ List<Proctor> selectAllById(@Param("id") String id);
+
+ List<Proctor> selectAllByName(@Param("name") String name);
+
+ int deleteOne(@Param("id") int id);
 }
