@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,8 +25,14 @@ public class ProctorController {
     }
     @RequestMapping("/deleteOne")
     @ResponseBody
-    public String deleteOne(int id){
+    public String deleteOne(int ProctorID){
 
-        return proctorService.deleteOne(id);
+        return proctorService.deleteOne(ProctorID);
+    }
+    @RequestMapping("/update")
+    @ResponseBody
+    public String update(@RequestBody Proctor proctor){
+
+        return proctorService.update(proctor);
     }
 }

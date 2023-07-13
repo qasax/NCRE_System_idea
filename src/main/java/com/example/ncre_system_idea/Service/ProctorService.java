@@ -74,8 +74,8 @@ public class ProctorService {
         }
     }
 
-    public String deleteOne(int id) {
-        int line=proctorDAO.deleteOne(id);
+    public String deleteOne(int ProctorID) {
+        int line=proctorDAO.deleteOne(ProctorID);
         if(line!=0){
             return "success";
         }else
@@ -83,5 +83,15 @@ public class ProctorService {
             return "wrong";
         }
 
+    }
+
+    public String update(Proctor proctor) {
+        int line=proctorDAO.update(proctor);
+        if(line!=0){
+            return "success";
+        }else
+        {
+            return "wrong";
+        }
     }
 }

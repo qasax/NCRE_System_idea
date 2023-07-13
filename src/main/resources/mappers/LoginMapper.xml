@@ -10,6 +10,6 @@
        -->
 
     <select id="selectOne" resultType="com.example.ncre_system_idea.pojo.Admin">
-        select * from Admin where loginName=#{loginName}
+        select * from user where Username=#{loginName}
     </select>
 </mapper>

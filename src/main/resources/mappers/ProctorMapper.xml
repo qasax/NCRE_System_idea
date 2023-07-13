@@ -3,8 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ncre_system_idea.DAO.ProctorDAO">
+    <update id="update">
+    update proctors set
+            TeacherName=#{TeacherName},Age=#{Age},Gender=#{Gender},PhoneNumber=#{PhoneNumber},Email=#{Email}
+            where ProctorID=#{ProctorID}
+    </update>
     <delete id="deleteOne">
-        delete from proctors where id=#{id}
+        delete from proctors where ProctorID=#{ProctorID}
     </delete>
 
 
@@ -12,9 +17,9 @@
         select * from proctors
     </select>
     <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.Proctor">
-        select * from proctors where id =#{id}
+        select * from proctors where ProctorID =#{id}
     </select>
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Proctor">
-        select * from proctors where teacherName LIKE CONCAT('%', #{name}, '%')
+        select * from proctors where TeacherName LIKE CONCAT('%', #{name}, '%')
     </select>
 </mapper>

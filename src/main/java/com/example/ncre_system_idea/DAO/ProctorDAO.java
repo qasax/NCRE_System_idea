@@ -14,5 +14,7 @@ public interface ProctorDAO  {
 
  List<Proctor> selectAllByName(@Param("name") String name);
 
- int deleteOne(@Param("id") int id);
+ int deleteOne(@Param("ProctorID") int ProctorID);
+
+    int update(Proctor proctor);
 }

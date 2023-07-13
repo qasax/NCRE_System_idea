@@ -48,11 +48,16 @@ public class LoginController {
             System.out.println("验证码正确");
             //进行登录判断的逻辑大家自己写，这里就不演示了
             Admin admin=loginService.selectOne(loginBody.getLoginName());
+            if(admin.getUserType().equals("admin")){
             if(admin !=null &&Objects.equals(admin.getPassword(), loginBody.getPassword() )) {
                 session.setAttribute("isLoginStatus", true);
                 session.setAttribute("loginName",loginBody.getLoginName());
                 session.setAttribute("password",loginBody.getPassword());
                 return "登录成功";
+            }else {
+                return "用户名或密码错误";
+            }
+
             }
      /*       if(admin != null) {
                 if(Objects.equals(admin.getPassword(), loginBody.getPassword())){

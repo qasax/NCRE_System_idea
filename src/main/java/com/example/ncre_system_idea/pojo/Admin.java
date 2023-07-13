@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 public class Admin {
-    int id;
-    String loginName;
-    String password;
+    int userId;
+    String UserName;
+    String Password;
+    String UserType;
 }

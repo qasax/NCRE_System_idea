@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 public class Proctor {
-    private int id;
-    private String teacherName;
-    private String account;
-    private String password;
-    private String age;
-    private String gender;
-    private String phoneNumber;
-    private String email;
+    private int ProctorID;
+    private String TeacherName;
+    private String Age;
+    private String Gender;
+    private String PhoneNumber;
+    private String Email;
+    private String Username;
 }
