@@ -1,9 +1,7 @@
 package com.example.ncre_system_idea.Service;
 
-import com.example.ncre_system_idea.DAO.ProctorDAO;
-import com.example.ncre_system_idea.pojo.Exam;
-import com.example.ncre_system_idea.pojo.Proctor;
-
+import com.example.ncre_system_idea.DAO.UserDAO;
+import com.example.ncre_system_idea.pojo.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +11,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class ProctorService {
+public class UserService {
     @Autowired
-    ProctorDAO proctorDAO;
-    public PageInfo<Proctor> selectAll(int pageNum, int pageSize,String sortProp,String sortOrder,boolean isSearch,String optionValue,String searchValue) {
+    UserDAO userDAO;
+    public PageInfo<User> selectAll(int pageNum, int pageSize, String sortProp, String sortOrder, boolean isSearch, String optionValue, String searchValue) {
         if(Objects.equals(isSearch, true)){
             /*点击了搜索按钮*/
             if(searchValue == ""){
@@ -25,8 +23,8 @@ public class ProctorService {
                 if(sortProp!=""){
                     PageHelper.orderBy(sortProp+" "+sortOrder);
                 }
-                List<Proctor> list =proctorDAO.selectAll();
-                PageInfo<Proctor> result =new PageInfo<>(list);
+                List<User> list =userDAO.selectAll();
+                PageInfo<User> result =new PageInfo<>(list);
                 return result;
             }else {
                 /*搜索不为空*/
@@ -36,26 +34,26 @@ public class ProctorService {
                     if(sortProp!=""){
                         PageHelper.orderBy(sortProp+" "+sortOrder);
                     }
-                    List<Proctor> list =proctorDAO.selectAll();
-                    PageInfo<Proctor> result =new PageInfo<>(list);
+                    List<User> list =userDAO.selectAll();
+                    PageInfo<User> result =new PageInfo<>(list);
                     return result;
                 }else {
                     /*正确进行搜索*/
-                    if("用户序号".equals(optionValue)){
+                    if("考试序号".equals(optionValue)){
                         PageHelper.startPage(pageNum,pageSize);
                         if(sortProp!=""){
                             PageHelper.orderBy(sortProp+" "+sortOrder);
                         }
-                        List<Proctor> list =proctorDAO.selectAllById(searchValue);
-                        PageInfo<Proctor> result =new PageInfo<>(list);
+                        List<User> list =userDAO.selectAllById(searchValue);
+                        PageInfo<User> result =new PageInfo<>(list);
                         return result;
                     }else {
                         PageHelper.startPage(pageNum,pageSize);
                         if(sortProp!=""){
                             PageHelper.orderBy(sortProp+" "+sortOrder);
                         }
-                        List<Proctor> list =proctorDAO.selectAllByName(searchValue);
-                        PageInfo<Proctor> result =new PageInfo<>(list);
+                        List<User> list =userDAO.selectAllByName(searchValue);
+                        PageInfo<User> result =new PageInfo<>(list);
                         return result;
                     }
 
@@ -69,25 +67,14 @@ public class ProctorService {
             if(sortProp!=""){
                 PageHelper.orderBy(sortProp+" "+sortOrder);
             }
-            List<Proctor> list =proctorDAO.selectAll();
-            PageInfo<Proctor> result =new PageInfo<>(list);
+            List<User> list =userDAO.selectAll();
+            PageInfo<User> result =new PageInfo<>(list);
             return result;
         }
     }
 
-    public String deleteOne(int ProctorID) {
-        int line=proctorDAO.deleteOne(ProctorID);
-        if(line!=0){
-            return "success";
-        }else
-        {
-            return "wrong";
-        }
-
-    }
-
-    public String update(Proctor proctor) {
-        int line=proctorDAO.update(proctor);
+    public String deleteOne(int UserID) {
+        int line=userDAO.deleteOne(UserID);
         if(line!=0){
             return "success";
         }else
@@ -95,8 +82,19 @@ public class ProctorService {
             return "wrong";
         }
     }
-    public String addOne(Proctor proctor) {
-        int line=   proctorDAO.addOne(proctor);
+
+    public String update(User user) {
+        int line=userDAO.update(user);
+        if(line!=0){
+            return "success";
+        }else
+        {
+            return "wrong";
+        }
+    }
+
+    public String addOne(User user) {
+        int line=   userDAO.addOne(user);
         if(line!=0){
             return "success";
         }else

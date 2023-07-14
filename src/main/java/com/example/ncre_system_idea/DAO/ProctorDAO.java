@@ -1,5 +1,6 @@
 package com.example.ncre_system_idea.DAO;
 
+import com.example.ncre_system_idea.pojo.ExamRoom;
 import com.example.ncre_system_idea.pojo.Proctor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,5 @@ public interface ProctorDAO  {
  int deleteOne(@Param("ProctorID") int ProctorID);
 
     int update(Proctor proctor);
+    int addOne(Proctor proctor);
 }

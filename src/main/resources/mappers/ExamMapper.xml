@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncre_system_idea.DAO.ExamDAO">
+    <insert id="addOne">
+        insert into exam values (null,#{ExamName},#{ExamDate},#{ExamTime},#{ExamLocation})
+    </insert>
+    <update id="update">
+        update exam set
+                            ExamName=#{ExamName},ExamDate=#{ExamDate},ExamTime=#{ExamTime},ExamLocation=#{ExamLocation}
+        where ExamID=#{ExamID}
+    </update>
+    <delete id="deleteOne">
+        delete from exam where ExamID=#{ExamID}
+    </delete>
+
+
+    <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.Exam">
+        select * from exam
+    </select>
+    <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.Exam">
+        select * from exam where ExamID=#{id}
+    </select>
+    <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Exam">
+        select * from exam where exam.ExamName LIKE CONCAT('%', #{name}, '%')
+    </select>
+</mapper>

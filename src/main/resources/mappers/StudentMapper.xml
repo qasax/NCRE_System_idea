@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncre_system_idea.DAO.StudentDAO">
+    <insert id="addOne">
+        insert into student values (null,#{Name},#{Gender},#{Age},#{PhoneNumber},#{Email},#{ExamID},
+                                    #{ExamRoomID},#{SeatID},#{Username})
+    </insert>
+    <update id="update">
+        update student set
+                           Name = #{Name},Gender=#{Gender},Age=#{Age},PhoneNumber=#{PhoneNumber},Email=#{Email},ExamID=#{ExamID},
+                           ExamRoomID=#{ExamRoomID},SeatID=#{SeatID}
+        where StudentID=#{StudentID}
+    </update>
+    <delete id="deleteOne">
+        delete from student where StudentID=#{StudentID}
+    </delete>
+    <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.Student">
+        select * from student
+    </select>
+    <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.Student">
+        select * from student where StudentID=#{id}
+    </select>
+    <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Student">
+        select * from student where Name LIKE CONCAT('%', #{name}, '%')
+    </select>
+</mapper>

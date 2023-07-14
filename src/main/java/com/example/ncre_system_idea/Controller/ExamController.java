@@ -1,5 +1,6 @@
 package com.example.ncre_system_idea.Controller;
 
+import com.example.ncre_system_idea.Service.ExamService;
 import com.example.ncre_system_idea.Service.ProctorService;
 import com.example.ncre_system_idea.pojo.Exam;
 import com.example.ncre_system_idea.pojo.Proctor;
@@ -11,35 +12,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 @Controller
 @CrossOrigin(origins = "http://localhost:8088", allowCredentials = "true")
-public class ProctorController {
+@RequestMapping("/exam")
+public class ExamController {
     @Autowired
-    ProctorService proctorService;
-    @RequestMapping("/aLLProctors")
+    ExamService examService;
+    @RequestMapping("/aLLExam")
     @ResponseBody
-    public PageInfo<Proctor> selectALL(int pageNum, int pageSize,String sortProp,String sortOrder,boolean isSearch,String optionValue,String searchValue){
+    public PageInfo<Exam> selectALL(int pageNum, int pageSize, String sortProp, String sortOrder, boolean isSearch, String optionValue, String searchValue){
 
-        return proctorService.selectAll(pageNum,pageSize,sortProp,sortOrder,isSearch,optionValue,searchValue);
+        return examService.selectAll(pageNum,pageSize,sortProp,sortOrder,isSearch,optionValue,searchValue);
     }
     @RequestMapping("/deleteOne")
     @ResponseBody
-    public String deleteOne(int ProctorID){
+    public String deleteOne(int examID){
 
-        return proctorService.deleteOne(ProctorID);
+        return examService.deleteOne(examID);
     }
     @RequestMapping("/update")
     @ResponseBody
-    public String update(@RequestBody Proctor proctor){
+    public String update(@RequestBody Exam exam){
 
-        return proctorService.update(proctor);
+        return examService.update(exam);
     }
     @RequestMapping("/addOne")
     @ResponseBody
-    public String addOne(@RequestBody Proctor proctor){
+    public String addOne(@RequestBody Exam exam){
 
-        return proctorService.addOne(proctor);
+        return examService.addOne(exam);
     }
 }

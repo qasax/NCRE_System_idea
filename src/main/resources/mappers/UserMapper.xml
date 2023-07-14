@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncre_system_idea.DAO.UserDAO">
+    <insert id="addOne">
+        insert into user values (null,#{Username},#{Password},#{UserType})
+    </insert>
+    <update id="update">
+        update user set
+                           Username = #{Username},Password=#{Password},UserType=#{UserType}
+        where UserID=#{UserID}
+    </update>
+    <delete id="deleteOne">
+        delete from user where UserID=#{UserID}
+    </delete>
+
+    <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.User">
+        select * from user
+    </select>
+    <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.User">
+        select * from user where UserID=#{id}
+    </select>
+    <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.User">
+        select * from user where Username LIKE CONCAT('%', #{name}, '%')
+    </select>
+</mapper>
