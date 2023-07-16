@@ -21,3 +21,4 @@ public class Student {
     private int SeatID;
     private String Username;
 }
+//学生实体
