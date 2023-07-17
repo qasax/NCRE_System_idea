@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 public class ExamRoom {
-    private int ExamRoomID;
-    private String ExamRoomName;
-    private  int SeatCount;
+    private int examRoomID;
+    private String examRoomName;
+    private  int seatCount;
 }

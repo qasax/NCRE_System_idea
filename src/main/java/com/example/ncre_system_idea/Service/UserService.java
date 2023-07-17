@@ -1,6 +1,7 @@
 package com.example.ncre_system_idea.Service;
 
 import com.example.ncre_system_idea.DAO.UserDAO;
+import com.example.ncre_system_idea.pojo.Student;
 import com.example.ncre_system_idea.pojo.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -39,7 +40,7 @@ public class UserService {
                     return result;
                 }else {
                     /*正确进行搜索*/
-                    if("考试序号".equals(optionValue)){
+                    if("用户序号".equals(optionValue)){
                         PageHelper.startPage(pageNum,pageSize);
                         if(sortProp!=""){
                             PageHelper.orderBy(sortProp+" "+sortOrder);
@@ -101,5 +102,12 @@ public class UserService {
         {
             return "wrong";
         }
+    }
+
+    public List<User> findProctors() {
+        return  userDAO.findProctors();
+    }
+    public List<Student> findStudents() {
+        return  userDAO.findStudents();
     }
 }

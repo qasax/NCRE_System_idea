@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @ToString
 public class Admin {
     int userId;
-    String UserName;
-    String Password;
-    String UserType;
+    String userName;
+    String password;
+    String userType;
 }

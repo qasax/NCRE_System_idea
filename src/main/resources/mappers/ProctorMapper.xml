@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ncre_system_idea.DAO.ProctorDAO">
     <insert id="addOne">
-        insert into proctors values (null,#{TeacherName},#{Age},#{Gender},#{PhoneNumber},#{Email},#{Username})
+        insert into proctors values (null,#{teacherName},#{age},#{gender},#{phoneNumber},#{email},#{username})
     </insert>
     <update id="update">
     update proctors set
-            TeacherName=#{TeacherName},Age=#{Age},Gender=#{Gender},PhoneNumber=#{PhoneNumber},Email=#{Email}
-            where ProctorID=#{ProctorID}
+            TeacherName=#{teacherName},Age=#{age},Gender=#{gender},PhoneNumber=#{phoneNumber},Email=#{username}
+            where ProctorID=#{proctorID}
     </update>
     <delete id="deleteOne">
-        delete from proctors where ProctorID=#{ProctorID}
+        delete from proctors where ProctorID=#{proctorID}
     </delete>
 
 

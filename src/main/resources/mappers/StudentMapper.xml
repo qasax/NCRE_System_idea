@@ -4,17 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ncre_system_idea.DAO.StudentDAO">
     <insert id="addOne">
-        insert into student values (null,#{Name},#{Gender},#{Age},#{PhoneNumber},#{Email},#{ExamID},
-                                    #{ExamRoomID},#{SeatID},#{Username})
+        insert into student values (null,#{name},#{gender},#{age},#{phoneNumber},#{email},#{examID},
+                                    #{examRoomID},#{seatID},#{username})
     </insert>
     <update id="update">
         update student set
-                           Name = #{Name},Gender=#{Gender},Age=#{Age},PhoneNumber=#{PhoneNumber},Email=#{Email},ExamID=#{ExamID},
-                           ExamRoomID=#{ExamRoomID},SeatID=#{SeatID}
-        where StudentID=#{StudentID}
+                           Name = #{name},Gender=#{gender},Age=#{age},PhoneNumber=#{phoneNumber},Email=#{email},ExamID=#{examID},
+                           ExamRoomID=#{examRoomID},SeatID=#{seatID}
+        where StudentID=#{studentID}
     </update>
     <delete id="deleteOne">
-        delete from student where StudentID=#{StudentID}
+        delete from student where StudentID=#{studentID}
     </delete>
     <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.Student">
         select * from student

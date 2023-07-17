@@ -10,15 +10,15 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 public class Student {
-   private int StudentID;
-   private String Name;
-    private String Gender;
-    private int Age ;
-    private String PhoneNumber;
-    private String Email;
-    private int ExamID;
-    private int ExamRoomID;
-    private int SeatID;
-    private String Username;
+   private int studentID;
+   private String name;
+    private String gender;
+    private int age;
+    private String phoneNumber;
+    private String email;
+    private int examID;
+    private int examRoomID;
+    private int seatID;
+    private String username;
 }
 //学生实体

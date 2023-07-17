@@ -41,7 +41,7 @@ public class ProctorService {
                     return result;
                 }else {
                     /*正确进行搜索*/
-                    if("用户序号".equals(optionValue)){
+                    if("监考员序号".equals(optionValue)){
                         PageHelper.startPage(pageNum,pageSize);
                         if(sortProp!=""){
                             PageHelper.orderBy(sortProp+" "+sortOrder);

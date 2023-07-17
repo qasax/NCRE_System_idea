@@ -10,9 +10,10 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 public class Exam {
-    private int ExamID;
-    private String ExamName;
-    private String ExamDate;
-    private String ExamTime;
-    private String ExamLocation;
+    private int examID;
+    private String examName;
+    private String examDate;
+    private String examTime;
+    private String examLocation;
+    private ExamRoom examRoom;
 }

@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ncre_system_idea.DAO.UserDAO">
     <insert id="addOne">
-        insert into user values (null,#{Username},#{Password},#{UserType})
+        insert into user values (null,#{username},#{password},#{userType})
     </insert>
     <update id="update">
         update user set
-                           Username = #{Username},Password=#{Password},UserType=#{UserType}
-        where UserID=#{UserID}
+                           Username = #{username},Password=#{password},UserType=#{userType}
+        where UserID=#{userID}
     </update>
     <delete id="deleteOne">
-        delete from user where UserID=#{UserID}
+        delete from user where UserID=#{userID}
     </delete>
 
     <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.User">

@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ncre_system_idea.DAO.ExamDAO">
     <insert id="addOne">
-        insert into exam values (null,#{ExamName},#{ExamDate},#{ExamTime},#{ExamLocation})
+        insert into exam values (null,#{examName},#{examDate},#{examTime},#{examLocation})
     </insert>
     <update id="update">
         update exam set
-                            ExamName=#{ExamName},ExamDate=#{ExamDate},ExamTime=#{ExamTime},ExamLocation=#{ExamLocation}
-        where ExamID=#{ExamID}
+                            ExamName=#{examName},ExamDate=#{examDate},ExamTime=#{examTime},ExamLocation=#{examLocation}
+        where ExamID=#{examID}
     </update>
     <delete id="deleteOne">
-        delete from exam where ExamID=#{ExamID}
+        delete from exam where ExamID=#{examID}
     </delete>
 
 

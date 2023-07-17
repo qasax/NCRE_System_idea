@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Setter
 @ToString
 public class User {
-    private  int UserID;
-    private String Username;
-    private String Password;
-    private String UserType;
+    private  int userID;
+    private String username;
+    private String password;
+    private String userType;
 }
