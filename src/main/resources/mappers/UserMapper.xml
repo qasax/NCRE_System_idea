@@ -24,4 +24,18 @@
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.User">
         select * from user where Username LIKE CONCAT('%', #{name}, '%')
     </select>
+    <select id="findProctors" resultType="com.example.ncre_system_idea.pojo.User">
+        SELECT a.UserID , a.Username , b.ProctorID
+        FROM (SELECT * FROM `user` WHERE UserType='proctor') AS a
+                 LEFT JOIN  proctors AS b
+                            ON a.Username = b.Username
+        WHERE b.ProctorID is NULL;
+    </select>
+    <select id="findStudents" resultType="com.example.ncre_system_idea.pojo.Student">
+        SELECT a.UserID , a.Username , b.StudentID
+        FROM (SELECT * FROM `user` WHERE UserType='student') AS a
+                 LEFT JOIN  student AS b
+                            ON a.Username = b.Username
+        WHERE b.StudentID is NULL;
+    </select>
 </mapper>
