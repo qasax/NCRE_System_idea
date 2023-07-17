@@ -20,9 +20,8 @@ public class LoginController {
 @Autowired
     LoginService loginService;
     @GetMapping("/identifyImage")
-    @ResponseBody
-    public void identifyImage(HttpServletResponse response, HttpSession session){
-        //创建随机验证码
+    @ResponseBody//
+    public void identifyImage(HttpServletResponse response, HttpSession session){//创建随机验证码
         IdentifyCodeUtils utils = new IdentifyCodeUtils();
         String identifyCode = utils.getIdentifyCode();
         //session存入验证码
@@ -82,7 +81,7 @@ public class LoginController {
     @RequestMapping("/sessionState")
     @ResponseBody
     public boolean login(HttpSession session){
-        System.out.println(session.getAttribute("isLoginStatus"));
+        System.out.println("是否处于登录状态"+session.getAttribute("isLoginStatus"));
         if(session.getAttribute("isLoginStatus")!= null) {
             return (boolean) session.getAttribute("isLoginStatus");
         }
