@@ -18,4 +18,7 @@ public interface UserDAO {
 
     int update(User user);
     int addOne(User user);
+
+    List<User> findProctors();//查询用户表中没有对应信息的监考员
+    List<Student> findStudents();//查找用户表中没有对应信息的考生
 }

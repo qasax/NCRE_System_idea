@@ -1,6 +1,7 @@
 package com.example.ncre_system_idea.Controller;
 
 import com.example.ncre_system_idea.Service.UserService;
+import com.example.ncre_system_idea.pojo.Student;
 import com.example.ncre_system_idea.pojo.User;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:8088", allowCredentials = "true")
@@ -39,5 +42,17 @@ public class UserController {
     public String addOne(@RequestBody User user){
 
         return userService.addOne(user);
+    }
+    @RequestMapping("/findProctors")//寻找数据库中user表没有对应信息的proctor
+    @ResponseBody
+    public List<User> findProctors(){
+
+        return userService.findProctors();
+    }
+    @RequestMapping("/findStudents")//寻找数据库中user表没有对应信息的Student
+    @ResponseBody
+    public List<Student> findStudents(){
+
+        return userService.findStudents();
     }
 }
