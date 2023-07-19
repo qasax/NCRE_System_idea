@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @CrossOrigin(origins = "http://localhost:8088", allowCredentials = "true")
 @RequestMapping("/student")
@@ -41,5 +43,10 @@ public class StudentController {
     public String addOne(@RequestBody Student student){
 
         return studentService.addOne(student);
+    }
+    @RequestMapping("/selectStudentOfExamRoom")
+    @ResponseBody
+    public PageInfo<Student> selectStudentOfExamRoom(int pageNum,int pageSize,String sortProp, String sortOrder,int examID , int examRoomID){
+        return  studentService.selectStudentOfExamRoom(pageNum,pageSize,sortProp,sortOrder,examID,examRoomID);
     }
 }

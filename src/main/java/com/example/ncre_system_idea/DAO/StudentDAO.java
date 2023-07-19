@@ -14,6 +14,8 @@ public interface StudentDAO {
     List<Student> selectAllById(@Param("id") String id);
 
     List<Student> selectAllByName(@Param("name") String name);
+    List<Student> selectStudentOfExamRoom(@Param("examID")int examID , @Param("examRoomID") int examRoomID);
+    //查询在某场考试某个考场的全部学生
 
     int deleteOne(@Param("studentID") int StudentID);
 

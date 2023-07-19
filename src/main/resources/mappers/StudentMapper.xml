@@ -25,4 +25,7 @@
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Student">
         select * from student where Name LIKE CONCAT('%', #{name}, '%')
     </select>
+    <select id="selectStudentOfExamRoom" resultType="com.example.ncre_system_idea.pojo.Student">
+        select * from student where ExamID=#{examID} and ExamRoomID=#{examRoomID}
+    </select>
 </mapper>

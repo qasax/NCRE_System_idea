@@ -6,6 +6,7 @@ import com.example.ncre_system_idea.pojo.ExamRoom;
 import com.example.ncre_system_idea.pojo.Student;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -102,5 +103,12 @@ public class StudentService {
         {
             return "wrong";
         }
+    }
+    public PageInfo<Student> selectStudentOfExamRoom(int pageNum,int pageSize,String sortProp, String sortOrder,int examID , int examRoomID){
+        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.orderBy(sortProp+" "+sortOrder);
+        List<Student> list=studentDAO.selectStudentOfExamRoom(examID,examRoomID);
+        PageInfo<Student> result =new PageInfo<>(list);
+        return  result;
     }
 }
