@@ -2,6 +2,7 @@ package com.example.ncre_system_idea.Controller;
 
 import com.example.ncre_system_idea.Service.ProctorService;
 import com.example.ncre_system_idea.pojo.Exam;
+import com.example.ncre_system_idea.pojo.ExamRoom;
 import com.example.ncre_system_idea.pojo.Proctor;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,11 @@ public class ProctorController {
     public String addOne(@RequestBody Proctor proctor){
 
         return proctorService.addOne(proctor);
+    }
+    @RequestMapping("/selectIt")//选出该场次考试尚未被使用的考场
+    @ResponseBody
+    public List<Proctor> selectIt(String examId){
+
+        return proctorService.selectIt(examId);
     }
 }

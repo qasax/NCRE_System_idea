@@ -15,8 +15,9 @@ public interface ProctorDAO  {
 
  List<Proctor> selectAllByName(@Param("name") String name);
 
- int deleteOne(@Param("ProctorID") int ProctorID);
+ int deleteOne(@Param("proctorID") int ProctorID);
 
     int update(Proctor proctor);
     int addOne(Proctor proctor);
+    List<Proctor> selectIt(@Param("examID") String examID);//选择出没有被分配到某一场考试的某一个考场的监考员
 }

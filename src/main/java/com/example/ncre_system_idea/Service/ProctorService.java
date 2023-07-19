@@ -2,6 +2,7 @@ package com.example.ncre_system_idea.Service;
 
 import com.example.ncre_system_idea.DAO.ProctorDAO;
 import com.example.ncre_system_idea.pojo.Exam;
+import com.example.ncre_system_idea.pojo.ExamRoom;
 import com.example.ncre_system_idea.pojo.Proctor;
 
 import com.github.pagehelper.PageHelper;
@@ -103,5 +104,9 @@ public class ProctorService {
         {
             return "wrong";
         }
+    }
+    public List<Proctor> selectIt(String examId) {
+        return proctorDAO.selectIt(examId);
+
     }
 }

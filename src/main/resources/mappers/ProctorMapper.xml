@@ -25,4 +25,14 @@
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Proctor">
         select * from proctors where TeacherName LIKE CONCAT('%', #{name}, '%')
     </select>
+    <select id="selectIt" resultType="com.example.ncre_system_idea.pojo.Proctor">
+        SELECT proctors.* FROM proctors
+                                   LEFT JOIN
+                               (SELECT ereproctors.*,examroomexam.examID,examroomexam.examRoomID
+                                FROM ereproctors LEFT JOIN examroomexam
+                                                           ON ereproctors.ereID=examroomexam.ereID WHERE examID=#{examID})
+                                   AS b
+                               ON proctors.ProctorID= b.ProctorID
+        WHERE ereID is NULL
+    </select>
 </mapper>
