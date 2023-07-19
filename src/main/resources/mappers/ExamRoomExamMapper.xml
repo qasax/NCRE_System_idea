@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncre_system_idea.DAO.ExamRoomExamDAO">
+    <insert id="addOne">
+        insert into examroomexam values (null,#{examID},#{examRoomID})
+    </insert>
+    <update id="update">
+        update examroomexam set
+                        examID=#{examID},examRoomID=#{examRoomID}
+        where ereID=#{ereID}
+    </update>
+    <delete id="deleteOne">
+        delete from examroomexam where ereID=#{ereID}
+    </delete>
+
+
+    <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.ExamRoomExam">
+        select * from examroomexam
+            INNER JOIN exam ON examroomexam.examID = exam.ExamID
+            INNER JOIN examroom ON examroomexam.examRoomID = examroom.ExamRoomID
+    </select>
+    <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.ExamRoomExam">
+        select * from examroomexam
+                          INNER JOIN exam ON examroomexam.examID = exam.ExamID
+                          INNER JOIN examroom ON examroomexam.examRoomID = examroom.ExamRoomID
+                 where examroomexam.ereID=#{id}
+    </select>
+    <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.ExamRoomExam">
+        select * from examroomexam
+                          INNER JOIN exam ON examroomexam.examID = exam.ExamID
+                          INNER JOIN examroom ON examroomexam.examRoomID = examroom.ExamRoomID
+                 where exam.ExamName LIKE CONCAT('%', #{name}, '%')
+    </select>
+</mapper>
