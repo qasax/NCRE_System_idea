@@ -102,5 +102,9 @@ public class ExamRoomService {
             return "wrong";
         }
     }
+    public List<ExamRoom> selectIt(String examId) {
+       return examRoomDAO.selectIt(examId);
+
+    }
     }
 

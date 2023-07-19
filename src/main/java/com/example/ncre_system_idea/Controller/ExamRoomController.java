@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @CrossOrigin(origins = "http://localhost:8088", allowCredentials = "true")
 @RequestMapping("/examroom")
@@ -41,5 +43,11 @@ public class ExamRoomController {
     public String addOne(@RequestBody ExamRoom examRoom){
 
         return examRoomService.addOne(examRoom);
+    }
+    @RequestMapping("/selectIt")//选出该场次考试尚未被使用的考场
+    @ResponseBody
+    public List<ExamRoom> selectIt(String examId){
+
+        return examRoomService.selectIt(examId);
     }
 }

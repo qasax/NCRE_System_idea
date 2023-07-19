@@ -23,4 +23,11 @@
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.ExamRoom">
         select * from examroom where ExamRoomName LIKE CONCAT('%', #{name}, '%')
     </select>
+    <select id="selectIt" resultType="com.example.ncre_system_idea.pojo.ExamRoom">
+        select * from
+            examroom LEFT JOIN  (SELECT * from examroomexam WHERE ExamID=#{examID}) AS a
+                                ON a.examRoomID = examroom.ExamRoomID
+        WHERE a.ereId is NULL
+
+    </select>
 </mapper>

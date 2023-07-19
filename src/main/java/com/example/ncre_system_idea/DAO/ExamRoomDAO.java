@@ -13,8 +13,9 @@ public interface ExamRoomDAO {
 
     List<ExamRoom> selectAllByName(@Param("name") String name);
 
-    int deleteOne(@Param("ExamRoomID") int ExamID);
+    int deleteOne(@Param("examRoomID") int examRoomID);
 
     int update(ExamRoom examRoom);
     int addOne(ExamRoom examRoom);
+    List<ExamRoom> selectIt(@Param("examID") String examID);//选出该场次考试尚未被使用的考场
 }
