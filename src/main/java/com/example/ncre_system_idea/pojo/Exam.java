@@ -15,5 +15,4 @@ public class Exam {
     private String examDate;
     private String examTime;
     private String examLocation;
-    private ExamRoom examRoom;
 }

@@ -15,7 +15,7 @@ public interface StudentDAO {
 
     List<Student> selectAllByName(@Param("name") String name);
 
-    int deleteOne(@Param("StudentID") int StudentID);
+    int deleteOne(@Param("studentID") int StudentID);
 
     int update(Student student);
     int addOne(Student student);

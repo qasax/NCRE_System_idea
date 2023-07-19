@@ -14,7 +14,7 @@ public interface ExamDAO {
 
     List<Exam> selectAllByName(@Param("name") String name);
 
-    int deleteOne(@Param("ExamID") int ExamID);
+    int deleteOne(@Param("examID") int ExamID);
 
     int update(Exam exam);
 
