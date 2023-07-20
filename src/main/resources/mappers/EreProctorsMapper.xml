@@ -21,25 +21,24 @@
     </delete>
 
 
-    <select id="selectAll" resultMap="selectAll">
-        SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount,proctors.*
-        FROM  examroomexam LEFT JOIN ereproctors   ON ereproctors.ereID=examroomexam.ereID
-                                  LEFT JOIN exam ON examroomexam.examID=exam.ExamID
-                                  LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
-                                  LEFT JOIN proctors ON ereproctors.proctorID=proctors.ProctorID
+    <select id="selectAll" resultMap="selectAll2">
+        SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount
+        FROM  examroomexam
+                  LEFT JOIN exam ON examroomexam.examID=exam.ExamID
+                  LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
     </select>
-    <select id="selectAllById" resultMap="selectAll">
-        SELECT * FROM  examroomexam LEFT JOIN ereproctors   ON ereproctors.ereID=examroomexam.ereID
-                                  LEFT JOIN exam ON examroomexam.examID=exam.ExamID
-                                  LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
-                                  LEFT JOIN proctors ON ereproctors.proctorID=proctors.ProctorID
+    <select id="selectAllById" resultMap="selectAll2">
+        SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount
+        FROM  examroomexam
+                  LEFT JOIN exam ON examroomexam.examID=exam.ExamID
+                  LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
         where examroomexam.ereID=#{id}
     </select>
-    <select id="selectAllByName" resultMap="selectAll">
-        SELECT * FROM  examroomexam LEFT JOIN ereproctors   ON ereproctors.ereID=examroomexam.ereID
-                                  LEFT JOIN exam ON examroomexam.examID=exam.ExamID
-                                  LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
-                                  LEFT JOIN proctors ON ereproctors.proctorID=proctors.ProctorID
+    <select id="selectAllByName" resultMap="selectAll2">
+        SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount
+        FROM  examroomexam
+                  LEFT JOIN exam ON examroomexam.examID=exam.ExamID
+                  LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
         where exam.ExamName LIKE CONCAT('%', #{name}, '%')
     </select>
     <resultMap id="selectAll" type="com.example.ncre_system_idea.pojo.EreProctors">
@@ -62,4 +61,23 @@
             <result property="username" column="Username"></result>
         </collection>
     </resultMap>
+    <resultMap id="selectAll2" type="com.example.ncre_system_idea.pojo.EreProctors">
+        <id property="ereID" column="ereID"></id>
+        <result property="examID" column="ExamID"></result>
+        <result property="examName" column="ExamName"></result>
+        <result property="examDate" column="ExamDate"></result>
+        <result property="examTime" column="ExamTime"></result>
+        <result property="examLocation" column="ExamLocation"></result>
+        <result property="examRoomID" column="ExamRoomID"></result>
+        <result property="examRoomName" column="ExamRoomName"></result>
+        <result property="seatCount" column="SeatCount"></result>
+        <collection property="proctors" ofType="com.example.ncre_system_idea.pojo.Proctor" select="selectProctor" column="ereID">
+        </collection>
+    </resultMap>
+    <select id="selectProctor" resultType="com.example.ncre_system_idea.pojo.Proctor">
+        SELECT	proctors.*		FROM	ereproctors
+        LEFT JOIN proctors ON ereproctors.proctorID=proctors.ProctorID
+        WHERE ereID=#{ereID}
+    </select>
+
 </mapper>

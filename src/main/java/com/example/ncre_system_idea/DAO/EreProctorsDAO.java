@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface EreProctorsDAO {
-    List<EreProctors> selectAll();
+    List<EreProctors> selectAll();//collection映射采用子查询的方式，pagehelper只会影响主查询，总而让pagehelper正常运行（防止一对多，占用查询pagesize）
     List<EreProctors> selectAllById(@Param("id") String id);
 
     List<EreProctors> selectAllByName(@Param("name") String name);
