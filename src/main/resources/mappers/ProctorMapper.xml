@@ -35,4 +35,7 @@
                                ON proctors.ProctorID= b.ProctorID
         WHERE ereID is NULL
     </select>
+    <select id="selectOne" resultType="java.lang.String">
+        select ProctorID from proctors limit #{start},1
+    </select>
 </mapper>

@@ -20,4 +20,5 @@ public interface ProctorDAO  {
     int update(Proctor proctor);
     int addOne(Proctor proctor);
     List<Proctor> selectIt(@Param("examID") String examID);//选择出没有被分配到某一场考试的某一个考场的监考员
+    String selectOne(@Param("start") int start);//利用limit限制，一次获取一名监考员的id -- 查询结果为空会返回null，所以要使用string接受
 }

@@ -18,4 +18,7 @@ public interface ExamRoomExamDAO {
 
     int update(ExamRoomExam examRoom);
     int addOne(ExamRoomExam examRoom);
+    int selectCount(@Param("examID") int examID);
+    int selectExamRoomID(@Param("examID") int examID,@Param("start") int start);
+    int selectEreID(@Param("examID") int examID,@Param("start") int start);
 }

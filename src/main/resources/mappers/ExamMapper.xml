@@ -25,4 +25,10 @@
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Exam">
         select * from exam where exam.ExamName LIKE CONCAT('%', #{name}, '%')
     </select>
+    <select id="selectCount" resultType="java.lang.Integer">
+        select COUNT(*) from exam
+    </select>
+    <select id="selectExamID" resultType="java.lang.Integer">
+        SELECT ExamID FROM exam LIMIT #{start},1
+    </select>
 </mapper>

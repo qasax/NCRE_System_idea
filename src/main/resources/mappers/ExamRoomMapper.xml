@@ -30,4 +30,7 @@
         WHERE a.ereId is NULL
 
     </select>
+    <select id="selectCount" resultType="java.lang.Integer">
+        SELECT SeatCount FROM examroom WHERE ExamRoomID=#{examRoomID}
+    </select>
 </mapper>

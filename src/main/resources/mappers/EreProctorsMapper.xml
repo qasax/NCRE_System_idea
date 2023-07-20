@@ -22,7 +22,8 @@
 
 
     <select id="selectAll" resultMap="selectAll">
-        SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount,proctors.*  FROM  examroomexam LEFT JOIN ereproctors   ON ereproctors.ereID=examroomexam.ereID
+        SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount,proctors.*
+        FROM  examroomexam LEFT JOIN ereproctors   ON ereproctors.ereID=examroomexam.ereID
                                   LEFT JOIN exam ON examroomexam.examID=exam.ExamID
                                   LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
                                   LEFT JOIN proctors ON ereproctors.proctorID=proctors.ProctorID
