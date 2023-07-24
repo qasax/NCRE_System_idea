@@ -104,6 +104,15 @@ public class StudentService {
             return "wrong";
         }
     }
+    public String registerOne(Student student) {
+        int line=   studentDAO.registerOne(student);
+        if(line!=0){
+            return "success";
+        }else
+        {
+            return "wrong";
+        }
+    }
     public PageInfo<Student> selectStudentOfExamRoom(int pageNum,int pageSize,String sortProp, String sortOrder,int examID , int examRoomID){
         PageHelper.startPage(pageNum,pageSize);
         PageHelper.orderBy(sortProp+" "+sortOrder);

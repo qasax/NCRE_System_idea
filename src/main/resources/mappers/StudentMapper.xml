@@ -7,6 +7,10 @@
         insert into student values (null,#{name},#{gender},#{age},#{phoneNumber},#{email},#{examID},
                                     #{examRoomID},#{seatID},#{username})
     </insert>
+    <insert id="registerOne">
+        insert into student values (null,#{name},#{gender},#{age},#{phoneNumber},#{email},null,
+                                    null,null,#{username})
+    </insert>
     <update id="update">
         update student set
                            Name = #{name},Gender=#{gender},Age=#{age},PhoneNumber=#{phoneNumber},Email=#{email},ExamID=#{examID},

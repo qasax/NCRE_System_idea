@@ -44,6 +44,12 @@ public class StudentController {
 
         return studentService.addOne(student);
     }
+    @RequestMapping("/registerOne")
+    @ResponseBody
+    public String registerOne(@RequestBody Student student){
+
+        return studentService.registerOne(student);
+    }
     @RequestMapping("/selectStudentOfExamRoom")
     @ResponseBody
     public PageInfo<Student> selectStudentOfExamRoom(int pageNum,int pageSize,String sortProp, String sortOrder,int examID , int examRoomID){

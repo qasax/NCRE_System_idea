@@ -21,6 +21,7 @@ public interface StudentDAO {
 
     int update(Student student);
     int addOne(Student student);
+    int registerOne(Student student);
     int updateAssignSeat(@Param("examID") int examID,@Param("examRoomID") int examRoomID,@Param("seatID") int seatID);//为学生分配对应的考场和座位
     int checkStudent();//检查报名考试的学生是否还有人没有对应的座位
 }
