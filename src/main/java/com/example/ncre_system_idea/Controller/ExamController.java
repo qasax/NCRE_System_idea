@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:8088", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:8088","http://localhost:8089"}, allowCredentials = "true")
 @RequestMapping("/exam")
 public class ExamController {
     @Autowired

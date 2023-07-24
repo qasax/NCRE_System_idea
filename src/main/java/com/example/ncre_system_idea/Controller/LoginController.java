@@ -94,8 +94,10 @@ public class LoginController {
     }
     @RequestMapping("/getUserName")
     @ResponseBody
-    public String getUserName(HttpSession session){
-
-        return (String) session.getAttribute("loginName");
+    public User getUserName(HttpSession session){
+            User user =new User();
+            user.setUsername((String) session.getAttribute("loginName"));
+            user.setUserType((String) session.getAttribute("userType"));
+        return user;
     }
 }
