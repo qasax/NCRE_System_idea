@@ -9,7 +9,7 @@
        2.mapper接口的方法名要和映射文件的sql的id保持一致
        -->
 
-    <select id="selectOne" resultType="com.example.ncre_system_idea.pojo.Admin">
+    <select id="selectOne" resultType="com.example.ncre_system_idea.pojo.User">
         select * from user where Username=#{loginName}
     </select>
 </mapper>
