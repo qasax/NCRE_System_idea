@@ -25,7 +25,7 @@ public interface StudentDAO {
     int checkStudent();//检查报名考试的学生是否还有人没有对应的座位
     //考生前台操作
     Student selectStudentByUsername(@Param("username")String username);//通过用户名查询对应考生信息
-    int updateStudent(Student student);
+    int updateStudent(Student student);//更新个人资料
     //前台考生报名
     int signUpExam(@Param("examID") int examID,@Param("username")String username);//考生选择科目后，为考生表添加对应考试id
     String getIsSignUp(@Param("username")String username);//获取考生是否已经报名了一场考试
