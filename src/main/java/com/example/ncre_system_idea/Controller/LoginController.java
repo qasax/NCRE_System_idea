@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 @Controller
-@CrossOrigin(origins = {"http://localhost:8088","http://localhost:8089"}, allowCredentials = "true")
+
 public class LoginController {
 @Autowired
     LoginService loginService;

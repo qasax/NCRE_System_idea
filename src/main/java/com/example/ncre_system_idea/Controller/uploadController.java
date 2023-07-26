@@ -13,7 +13,6 @@ import java.io.OutputStream;
 import java.util.UUID;
 
 @Controller
-@CrossOrigin(origins = {"http://localhost:8088","http://localhost:8089"})
 @RequestMapping("/file")
 public class uploadController {
     //头像上传
