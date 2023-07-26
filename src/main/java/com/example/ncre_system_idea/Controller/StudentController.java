@@ -67,4 +67,18 @@ public class StudentController {
         System.out.println(student);
         return  studentService.updateStudent(student);
     }
+    @RequestMapping("/signUpExam")
+    @ResponseBody
+    public String signUpExam(int examID,String username){
+        return  studentService.signUpExam(examID,username);
+    }
+    @RequestMapping("/getIsSignUp")
+    @ResponseBody
+    public String getIsSignUp(String username){
+        if(studentService.getIsSignUp(username)==null){
+            return  "null";
+        }else
+            return studentService.getIsSignUp(username);
+
+    }
 }

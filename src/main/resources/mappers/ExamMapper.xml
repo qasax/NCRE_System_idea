@@ -31,4 +31,7 @@
     <select id="selectExamID" resultType="java.lang.Integer">
         SELECT ExamID FROM exam LIMIT #{start},1
     </select>
+    <select id="selectAllExam" resultType="com.example.ncre_system_idea.pojo.Exam">
+        select * from exam
+    </select>
 </mapper>

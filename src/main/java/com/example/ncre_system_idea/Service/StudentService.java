@@ -133,4 +133,16 @@ public class StudentService {
             return "wrong";
         }
     }
+    public String signUpExam(int examID,String username) {
+        int line=studentDAO.signUpExam(examID,username);
+        if(line!=0){
+            return "success";
+        }else
+        {
+            return "wrong";
+        }
+    }
+    public String getIsSignUp(String username) {
+        return studentDAO.getIsSignUp(username);
+    }
 }

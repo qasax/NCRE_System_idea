@@ -28,6 +28,11 @@
                            Name = #{name},Gender=#{gender},Age=#{age},PhoneNumber=#{phoneNumber},Email=#{email}
         where StudentID=#{studentID}
     </update>
+    <update id="signUpExam">
+        update student set
+                           ExamID=#{examID}
+        where username=#{username}
+    </update>
     <delete id="deleteOne">
         delete from student where StudentID=#{studentID}
     </delete>
@@ -48,5 +53,8 @@
     </select>
     <select id="selectStudentByUsername" resultType="com.example.ncre_system_idea.pojo.Student">
         select * from student where Username=#{username}
+    </select>
+    <select id="getIsSignUp" resultType="java.lang.String">
+        select examID from student where Username=#{username}
     </select>
 </mapper>

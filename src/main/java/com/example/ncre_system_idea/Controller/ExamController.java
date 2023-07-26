@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/exam")
 public class ExamController {
@@ -40,5 +42,11 @@ public class ExamController {
     public String addOne(@RequestBody Exam exam){
 
         return examService.addOne(exam);
+    }
+    @RequestMapping("/selectAllExam")
+    @ResponseBody
+    public List<Exam> selectAllExam(){
+
+        return examService.selectAllExam();
     }
 }

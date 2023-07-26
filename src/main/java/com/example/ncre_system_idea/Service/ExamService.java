@@ -104,4 +104,7 @@ public class ExamService {
             return "wrong";
         }
     }
+    public List<Exam> selectAllExam(){
+        return  examDAO.selectAllExam();
+    }
 }

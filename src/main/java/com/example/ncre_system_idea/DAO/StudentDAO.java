@@ -26,5 +26,7 @@ public interface StudentDAO {
     //考生前台操作
     Student selectStudentByUsername(@Param("username")String username);//通过用户名查询对应考生信息
     int updateStudent(Student student);
-
+    //前台考生报名
+    int signUpExam(@Param("examID") int examID,@Param("username")String username);
+    String getIsSignUp(@Param("username")String username);
 }
