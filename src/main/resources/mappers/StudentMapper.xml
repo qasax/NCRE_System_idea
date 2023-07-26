@@ -57,4 +57,28 @@
     <select id="getIsSignUp" resultType="java.lang.String">
         select examID from student where Username=#{username}
     </select>
+    <select id="selectSingUpOverStudent" resultMap="selectSingUpOverStudentMap">
+        select * from student where Username=#{username}
+    </select>
+    <resultMap id="selectSingUpOverStudentMap" type="com.example.ncre_system_idea.pojo.Student">
+        <id property="studentID" column="StudentID"></id>
+        <result property="name" column="Name"></result>
+        <result property="gender" column="Gender"></result>
+        <result property="age" column="Age"></result>
+        <result property="phoneNumber" column="PhoneNumber"></result>
+        <result property="email" column="Email"></result>
+        <result property="examID" column="ExamID"></result>
+        <result property="examRoomID" column="ExamRoomID"></result>
+        <result property="seatID" column="SeatID"></result>
+        <result property="username" column="Username"></result>
+        <association property="exam" column="ExamID" select="selectExam" javaType="com.example.ncre_system_idea.pojo.Exam"></association>
+        <association property="examRoom" column="ExamRoomID" select="selectExamRoom" javaType="com.example.ncre_system_idea.pojo.ExamRoom">
+        </association>
+    </resultMap>
+    <select id="selectExam" resultType="com.example.ncre_system_idea.pojo.Exam">
+        select * from exam where ExamID=#{ExamID}
+    </select>
+    <select id="selectExamRoom" resultType="com.example.ncre_system_idea.pojo.ExamRoom">
+        select * from examroom where ExamRoomID=#{ExamRoomID}
+    </select>
 </mapper>

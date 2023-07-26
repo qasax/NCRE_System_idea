@@ -21,5 +21,5 @@ public interface ExamDAO {
     int selectCount();//查询有多少场考试
     int selectExamID(@Param("start") int start);//查询对应考场id
     //前台操作
-    List<Exam> selectAllExam();
+    List<Exam> selectAllExam();//获取全部考试
 }

@@ -81,4 +81,9 @@ public class StudentController {
             return studentService.getIsSignUp(username);
 
     }
+    @RequestMapping("/selectSingUpOverStudent")
+    @ResponseBody
+    public Student selectSingUpOverStudent(String username){
+        return  studentService.selectSingUpOverStudent(username);
+    }
 }

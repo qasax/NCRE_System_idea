@@ -145,4 +145,7 @@ public class StudentService {
     public String getIsSignUp(String username) {
         return studentDAO.getIsSignUp(username);
     }
+    public Student selectSingUpOverStudent(String username){
+    return  studentDAO.selectSingUpOverStudent(username);
+    }
 }
