@@ -120,4 +120,17 @@ public class StudentService {
         PageInfo<Student> result =new PageInfo<>(list);
         return  result;
     }
+    //考生前台
+    public Student selectStudentByUsername(String username){
+        return studentDAO.selectStudentByUsername(username);
+    }
+    public String updateStudent(Student student) {
+        int line=studentDAO.updateStudent(student);
+        if(line!=0){
+            return "success";
+        }else
+        {
+            return "wrong";
+        }
+    }
 }

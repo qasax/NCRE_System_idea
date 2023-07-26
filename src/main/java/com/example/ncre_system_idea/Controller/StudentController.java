@@ -19,6 +19,7 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentService studentService;
+    //管理员后台服务
     @RequestMapping("/allStudent")
     @ResponseBody
     public PageInfo<Student> selectALL(int pageNum, int pageSize, String sortProp, String sortOrder, boolean isSearch, String optionValue, String searchValue){
@@ -53,5 +54,17 @@ public class StudentController {
     @ResponseBody
     public PageInfo<Student> selectStudentOfExamRoom(int pageNum,int pageSize,String sortProp, String sortOrder,int examID , int examRoomID){
         return  studentService.selectStudentOfExamRoom(pageNum,pageSize,sortProp,sortOrder,examID,examRoomID);
+    }
+    //考生和监考员前台服务
+    @RequestMapping("/selectStudentByUsername")
+    @ResponseBody
+    public Student selectStudentByUsername(String username){
+        return  studentService.selectStudentByUsername(username);
+    }
+    @RequestMapping("/updateStudent")
+    @ResponseBody
+    public String updateStudent(@RequestBody Student student){
+        System.out.println(student);
+        return  studentService.updateStudent(student);
     }
 }

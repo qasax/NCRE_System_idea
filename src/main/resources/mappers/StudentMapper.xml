@@ -23,6 +23,11 @@
         WHERE ExamID=#{examID} AND ExamRoomID IS NULL AND SeatID IS NULL
         LIMIT 1;
     </update>
+    <update id="updateStudent">
+        update student set
+                           Name = #{name},Gender=#{gender},Age=#{age},PhoneNumber=#{phoneNumber},Email=#{email}
+        where StudentID=#{studentID}
+    </update>
     <delete id="deleteOne">
         delete from student where StudentID=#{studentID}
     </delete>
@@ -40,5 +45,8 @@
     </select>
     <select id="checkStudent" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM student WHERE ExamID is NOT NULL AND ExamRoomID IS NULL AND SeatID is NULL
+    </select>
+    <select id="selectStudentByUsername" resultType="com.example.ncre_system_idea.pojo.Student">
+        select * from student where Username=#{username}
     </select>
 </mapper>
