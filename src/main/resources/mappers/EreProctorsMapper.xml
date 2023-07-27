@@ -21,20 +21,20 @@
     </delete>
 
 
-    <select id="selectAll" resultMap="selectAll2">
+    <select id="selectAll" resultMap="selectAll">
         SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount
         FROM  examroomexam
                   LEFT JOIN exam ON examroomexam.examID=exam.ExamID
                   LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
     </select>
-    <select id="selectAllById" resultMap="selectAll2">
+    <select id="selectAllById" resultMap="selectAll">
         SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount
         FROM  examroomexam
                   LEFT JOIN exam ON examroomexam.examID=exam.ExamID
                   LEFT JOIN examroom ON examroomexam.examRoomID=examroom.ExamRoomID
         where examroomexam.ereID=#{id}
     </select>
-    <select id="selectAllByName" resultMap="selectAll2">
+    <select id="selectAllByName" resultMap="selectAll">
         SELECT examroomexam.*,exam.ExamName,exam.ExamTime,exam.ExamLocation,exam.ExamDate,examroom.ExamRoomName,examroom.SeatCount
         FROM  examroomexam
                   LEFT JOIN exam ON examroomexam.examID=exam.ExamID
@@ -42,26 +42,6 @@
         where exam.ExamName LIKE CONCAT('%', #{name}, '%')
     </select>
     <resultMap id="selectAll" type="com.example.ncre_system_idea.pojo.EreProctors">
-        <id property="ereID" column="ereID"></id>
-        <result property="examID" column="ExamID"></result>
-        <result property="examName" column="ExamName"></result>
-        <result property="examDate" column="ExamDate"></result>
-        <result property="examTime" column="ExamTime"></result>
-        <result property="examLocation" column="ExamLocation"></result>
-        <result property="examRoomID" column="ExamRoomID"></result>
-        <result property="examRoomName" column="ExamRoomName"></result>
-        <result property="seatCount" column="SeatCount"></result>
-        <collection property="proctors" ofType="com.example.ncre_system_idea.pojo.Proctor">
-            <id property="proctorID" column="ProctorID"></id>
-            <result property="teacherName" column="TeacherName"></result>
-            <result property="age" column="Age"></result>
-            <result property="gender" column="Gender"></result>
-            <result property="phoneNumber" column="PhoneNumber"></result>
-            <result property="email" column="Email"></result>
-            <result property="username" column="Username"></result>
-        </collection>
-    </resultMap>
-    <resultMap id="selectAll2" type="com.example.ncre_system_idea.pojo.EreProctors">
         <id property="ereID" column="ereID"></id>
         <result property="examID" column="ExamID"></result>
         <result property="examName" column="ExamName"></result>

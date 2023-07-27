@@ -25,4 +25,5 @@ public interface ProctorDAO  {
     //监考员前台操作
     Proctor selectProctorByUsername(@Param("username") String username);
     int updateProctor(Proctor proctor);
+    List<Proctor> selectExamMsgByUsername(@Param("username")String username);
 }

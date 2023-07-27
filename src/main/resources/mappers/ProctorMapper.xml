@@ -46,4 +46,26 @@
     <select id="selectProctorByUsername" resultType="com.example.ncre_system_idea.pojo.Proctor">
         select  * from proctors where Username=#{username}
     </select>
+    <select id="selectExamMsgByUsername" resultMap="selectExamMsg">
+        select * from proctors left join ereproctors on proctors.ProctorID =ereproctors.proctorID
+            LEFT JOIN examroomexam ON ereproctors.ereID=examroomexam.ereID
+                 WHERE Username =#{username}
+    </select>
+    <resultMap id="selectExamMsg" type="com.example.ncre_system_idea.pojo.Proctor">
+        <id property="proctorID" column="ProctorID"></id>
+        <result property="teacherName" column="TeacherName"></result>
+        <result property="age" column="Age"></result>
+        <result property="gender" column="Gender"></result>
+        <result property="phoneNumber" column="PhoneNumber"></result>
+        <result property="email" column="Email"></result>
+        <result property="username" column="Username"></result>
+        <association property="exam" javaType="com.example.ncre_system_idea.pojo.Exam" select="selectExam" column="ExamID"></association>
+        <association property="examRoom" javaType="com.example.ncre_system_idea.pojo.ExamRoom" select="selectExamRoom" column="examRoomID"></association>
+    </resultMap>
+    <select id="selectExam" resultType="com.example.ncre_system_idea.pojo.Exam">
+        select * from  exam where ExamID=#{ExamID}
+    </select>
+    <select id="selectExamRoom" resultType="com.example.ncre_system_idea.pojo.ExamRoom">
+        select * from  examroom where ExamRoomID=#{examRoomID}
+    </select>
 </mapper>

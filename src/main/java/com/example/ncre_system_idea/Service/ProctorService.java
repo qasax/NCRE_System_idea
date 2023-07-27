@@ -122,4 +122,7 @@ public class ProctorService {
             return "wrong";
         }
     }
+    public List<Proctor> selectExamMsgByUsername(String username){
+        return proctorDAO.selectExamMsgByUsername(username);
+    }
 }

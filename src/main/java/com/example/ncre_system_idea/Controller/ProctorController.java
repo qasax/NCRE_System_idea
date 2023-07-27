@@ -60,4 +60,9 @@ public class ProctorController {
         return  proctorService.updateProctor(proctor);
 
     }
+    @RequestMapping("/selectExamMsgByUsername")//找出该监考员所负责的全部考场
+    @ResponseBody
+    public List<Proctor> selectExamMsgByUsername(String username){
+        return proctorService.selectExamMsgByUsername(username);
+    }
 }

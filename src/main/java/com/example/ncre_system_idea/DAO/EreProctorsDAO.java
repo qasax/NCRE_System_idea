@@ -19,4 +19,5 @@ public interface EreProctorsDAO {
 
     int update(@Param("before1") int before1,@Param("before2") int before2,@Param("ereID")int ereID,@Param("after1") int after1,@Param("after2") int after2) ;
     int addOne(@Param("ereID") int ereID,@Param("proctorID") int proctorID);
+    //监考员前台
 }
