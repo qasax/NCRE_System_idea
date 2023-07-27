@@ -48,4 +48,16 @@ public class ProctorController {
 
         return proctorService.selectIt(examId);
     }
+    //监考员前台
+    @RequestMapping("/selectProctorByUsername")//选出该场次考试尚未被使用的考场
+    @ResponseBody
+    public Proctor selectProctorByUsername(String username){
+        return  proctorService.selectProctorByUsername(username);
+    }
+    @RequestMapping("/updateProctor")//选出该场次考试尚未被使用的考场
+    @ResponseBody
+    public String updateProctor(@RequestBody Proctor proctor) {
+        return  proctorService.updateProctor(proctor);
+
+    }
 }

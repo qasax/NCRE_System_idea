@@ -109,4 +109,17 @@ public class ProctorService {
         return proctorDAO.selectIt(examId);
 
     }
+    //监考员前台
+    public Proctor selectProctorByUsername(String username){
+        return  proctorDAO.selectProctorByUsername(username);
+    }
+    public String updateProctor(Proctor proctor) {
+        int line=proctorDAO.updateProctor(proctor);
+        if(line!=0){
+            return "success";
+        }else
+        {
+            return "wrong";
+        }
+    }
 }

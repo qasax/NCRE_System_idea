@@ -8,8 +8,13 @@
     </insert>
     <update id="update">
     update proctors set
-            TeacherName=#{teacherName},Age=#{age},Gender=#{gender},PhoneNumber=#{phoneNumber},Email=#{username}
+            TeacherName=#{teacherName},Age=#{age},Gender=#{gender},PhoneNumber=#{phoneNumber},Email=#{email}
             where ProctorID=#{proctorID}
+    </update>
+    <update id="updateProctor">
+        update proctors set
+                            TeacherName=#{teacherName},Age=#{age},Gender=#{gender},PhoneNumber=#{phoneNumber},Email=#{email}
+        where ProctorID=#{proctorID}
     </update>
     <delete id="deleteOne">
         delete from proctors where ProctorID=#{proctorID}
@@ -37,5 +42,8 @@
     </select>
     <select id="selectOne" resultType="java.lang.String">
         select ProctorID from proctors limit #{start},1
+    </select>
+    <select id="selectProctorByUsername" resultType="com.example.ncre_system_idea.pojo.Proctor">
+        select  * from proctors where Username=#{username}
     </select>
 </mapper>
