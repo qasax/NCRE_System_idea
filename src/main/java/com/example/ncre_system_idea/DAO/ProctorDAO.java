@@ -23,7 +23,7 @@ public interface ProctorDAO  {
     List<Proctor> selectIt(@Param("examID") String examID);//选择出没有被分配到某一场考试的某一个考场的监考员
     String selectOne(@Param("start") int start);//利用limit限制，一次获取一名监考员的id -- 查询结果为空会返回null，所以要使用string接受
     //监考员前台操作
-    Proctor selectProctorByUsername(@Param("username") String username);
-    int updateProctor(Proctor proctor);
-    List<Proctor> selectExamMsgByUsername(@Param("username")String username);
+    Proctor selectProctorByUsername(@Param("username") String username);//查找监考员的信息
+    int updateProctor(Proctor proctor);//更新监考员的信息
+    List<Proctor> selectExamMsgByUsername(@Param("username")String username);//监考员查询自己所负责的考场
 }

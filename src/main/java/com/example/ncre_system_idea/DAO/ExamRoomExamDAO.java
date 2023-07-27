@@ -18,7 +18,7 @@ public interface ExamRoomExamDAO {
 
     int update(ExamRoomExam examRoom);
     int addOne(ExamRoomExam examRoom);
-    int selectCount(@Param("examID") int examID);
-    int selectExamRoomID(@Param("examID") int examID,@Param("start") int start);
-    int selectEreID(@Param("examID") int examID,@Param("start") int start);
+    int selectCount(@Param("examID") int examID);//查询考试的数量
+    int selectExamRoomID(@Param("examID") int examID,@Param("start") int start);//根据考试id，依次查询该次考试教室的id
+    int selectEreID(@Param("examID") int examID,@Param("start") int start);//根据考试id，依次获取该次考试对应的ereID
 }
