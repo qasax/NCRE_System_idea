@@ -21,4 +21,5 @@ public interface UserDAO {
 
     List<User> findProctors();//查询用户表中没有对应信息的监考员
     List<Student> findStudents();//查找用户表中没有对应信息的考生
+    String selectUsername(@Param("username") String username);//查询是否有重名的用户名
 }

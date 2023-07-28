@@ -93,7 +93,7 @@ public class EreProctorsService {
         int line=ereProctorsDAO.update(before1,before2,ereID,after1,after2);
         if(before1!=0&before2==0){//筛选出只有一个监考员的情况
             /*ereProctorsDAO.update(before1,before2,ereID,after2,after1);//把表中原来的数据修改成管理员2对应的数据（原因：collection对应select查询结果生成的List集合顺序会与查询结果相反）*/
-            //上面的问题，无法复现，修改为正常添加方式，上面的方法废弃。
+            //----上面的问题，无法复现，修改为正常添加方式，上面的方法废弃。--------
             addOne(ereID,after1);//然后再把原来监考员1的数据再添加进去
         }else {
             if (before1 == 0) {

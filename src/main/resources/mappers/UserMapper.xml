@@ -38,4 +38,7 @@
                             ON a.Username = b.Username
         WHERE b.StudentID is NULL;
     </select>
+    <select id="selectUsername" resultType="java.lang.String">
+        select * from user where Username=#{username}
+    </select>
 </mapper>

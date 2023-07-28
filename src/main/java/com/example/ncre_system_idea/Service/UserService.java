@@ -110,4 +110,12 @@ public class UserService {
     public List<Student> findStudents() {
         return  userDAO.findStudents();
     }
+    public int selectUsername(String username){
+       String line= userDAO.selectUsername(username);
+       System.out.println(line);
+       if(line==null){
+           return 0;
+       }else
+           return Integer.parseInt(line);
+    }
 }

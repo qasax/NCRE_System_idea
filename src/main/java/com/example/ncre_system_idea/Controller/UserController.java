@@ -54,4 +54,10 @@ public class UserController {
 
         return userService.findStudents();
     }
+    @RequestMapping("/selectUsername")//寻找数据库中user表没有对应信息的Student
+    @ResponseBody
+    public int selectUsername(String username){
+
+        return userService.selectUsername(username);
+    }
 }
