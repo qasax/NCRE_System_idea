@@ -86,7 +86,11 @@ public class UserService {
         }
     }
 
-    public String update(User user) {
+    public String update(User user) {//采用aes加密算法对密码进行加密
+        String aesKey=AesUtil.generateAESKey();
+        String password=AesUtil.encryptAes(user.getPassword(),aesKey);
+        user.setPassword(password);
+        user.setAesKey(aesKey);
         int line=userDAO.update(user);
         if(line!=0){
             return "success";

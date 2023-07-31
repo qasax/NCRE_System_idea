@@ -13,5 +13,6 @@ public class LoginBody {
     String loginName;
     String password;
     String identifyCode;
+    String userType;
 
 }
