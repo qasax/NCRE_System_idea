@@ -23,11 +23,11 @@ public class FileController {
         System.out.println(imgName);
         String imgFilePath = "D:\\重装前桌面代码内容\\暑期实训_1\\uploadImg\\" + imgName;
         System.out.println(imgFilePath);
-        OutputStream out = new FileOutputStream(imgFilePath);
-        out.write(file.getBytes());
-        out.flush();
-        out.close();
-        return "ok";
+        try(OutputStream out = new FileOutputStream(imgFilePath)){
+            out.write(file.getBytes());
+            out.flush();
+            return "ok";
+        }
     }
 
     //返回前台头像
@@ -36,10 +36,12 @@ public class FileController {
     public byte[] getImage(HttpSession session) throws Exception {
 
         File file = new File("D:\\重装前桌面代码内容\\暑期实训_1\\uploadImg\\" + session.getAttribute("loginName") + "_avatar" + ".jpg");
-        FileInputStream inputStream = new FileInputStream(file);
-        byte[] bytes = new byte[inputStream.available()];
-        inputStream.read(bytes, 0, inputStream.available());
-        return bytes;
+        try(FileInputStream inputStream = new FileInputStream(file)){
+
+            byte[] bytes = new byte[inputStream.available()];
+            inputStream.read(bytes, 0, inputStream.available());
+            return bytes;
+        }
     }
 
     @Autowired

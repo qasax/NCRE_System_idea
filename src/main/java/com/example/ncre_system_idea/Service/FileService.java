@@ -58,8 +58,6 @@ public class FileService {
             HttpStatus statusCode = HttpStatus.OK;
             //创建ResponseEntity对象
             ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers,statusCode);
-            //关闭输入流
-            is.close();
             return responseEntity;
         }
 
@@ -72,7 +70,6 @@ public class FileService {
         try(OutputStream out = new FileOutputStream(fileName)){
             out.write(file.getBytes());
             out.flush();
-            out.close();
             // 这里默认每次会读取100条数据 然后返回过来 直接调用使用数据就行
             // 具体需要返回多少行可以在`PageReadListener`的构造函数设置
             EasyExcel.read(fileName, Exam.class, new PageReadListener<Exam>(dataList -> {
@@ -113,8 +110,6 @@ public class FileService {
             HttpStatus statusCode = HttpStatus.OK;
             //创建ResponseEntity对象
             ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers,statusCode);
-            //关闭输入流
-            is.close();
             return responseEntity;
         }
     }
@@ -125,7 +120,6 @@ public class FileService {
         try( OutputStream out = new FileOutputStream(fileName)){
             out.write(file.getBytes());
             out.flush();
-            out.close();
             // 这里默认每次会读取100条数据 然后返回过来 直接调用使用数据就行
             // 具体需要返回多少行可以在`PageReadListener`的构造函数设置
             EasyExcel.read(fileName, Exam.class, new PageReadListener<Student>(dataList -> {
@@ -166,8 +160,6 @@ public class FileService {
             HttpStatus statusCode = HttpStatus.OK;
             //创建ResponseEntity对象
             ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers,statusCode);
-            //关闭输入流
-            is.close();
             return responseEntity;
         }
     }
@@ -178,7 +170,6 @@ public class FileService {
         try(OutputStream out = new FileOutputStream(fileName)){
             out.write(file.getBytes());
             out.flush();
-            out.close();
             // 这里默认每次会读取100条数据 然后返回过来 直接调用使用数据就行
             // 具体需要返回多少行可以在`PageReadListener`的构造函数设置
             EasyExcel.read(fileName, Proctor.class, new PageReadListener<Proctor>(dataList -> {
@@ -219,8 +210,6 @@ public class FileService {
             HttpStatus statusCode = HttpStatus.OK;
             //创建ResponseEntity对象
             ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bytes, headers,statusCode);
-            //关闭输入流
-            is.close();
             return responseEntity;
         }
     }
@@ -231,7 +220,6 @@ public class FileService {
         try(OutputStream out = new FileOutputStream(fileName)){
             out.write(file.getBytes());
             out.flush();
-            out.close();
             // 这里默认每次会读取100条数据 然后返回过来 直接调用使用数据就行
             // 具体需要返回多少行可以在`PageReadListener`的构造函数设置
             EasyExcel.read(fileName, ExamRoom.class, new PageReadListener<ExamRoom>(dataList -> {
