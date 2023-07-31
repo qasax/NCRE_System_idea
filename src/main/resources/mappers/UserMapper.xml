@@ -4,41 +4,41 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.ncre_system_idea.DAO.UserDAO">
     <insert id="addOne">
-        insert into user values (null,#{username},#{password},#{userType})
+        insert into user values (null,#{username},#{password},#{aesKey},#{userType})
     </insert>
     <update id="update">
         update user set
-                           Username = #{username},Password=#{password},UserType=#{userType}
-        where UserID=#{userID}
+                           username = #{username},password=#{password},aesKey=#{aesKey},userType=#{userType}
+        where userID=#{userID}
     </update>
     <delete id="deleteOne">
-        delete from user where UserID=#{userID}
+        delete from user where userID=#{userID}
     </delete>
 
     <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.User">
-        select * from user
+        select userID, username, password, userType from user
     </select>
     <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.User">
-        select * from user where UserID=#{id}
+        select userID, username, password, userType from user where userID=#{id}
     </select>
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.User">
-        select * from user where Username LIKE CONCAT('%', #{name}, '%')
+        select userID, username, password, userType from user where username LIKE CONCAT('%', #{name}, '%')
     </select>
-    <select id="findProctors" resultType="com.example.ncre_system_idea.pojo.User">
-        SELECT a.UserID , a.Username , b.ProctorID
-        FROM (SELECT * FROM `user` WHERE UserType='proctor') AS a
+    <select id="findProctors" resultType="com.example.ncre_system_idea.pojo.Proctor">
+        SELECT a.userID , a.username , b.proctorID
+        FROM (SELECT * FROM `user` WHERE userType='proctor') AS a
                  LEFT JOIN  proctors AS b
-                            ON a.Username = b.Username
-        WHERE b.ProctorID is NULL;
+                            ON a.username = b.username
+        WHERE b.proctorID is NULL;
     </select>
     <select id="findStudents" resultType="com.example.ncre_system_idea.pojo.Student">
-        SELECT a.UserID , a.Username , b.StudentID
-        FROM (SELECT * FROM `user` WHERE UserType='student') AS a
+        SELECT a.userID , a.username , b.studentID
+        FROM (SELECT * FROM `user` WHERE userType='student') AS a
                  LEFT JOIN  student AS b
-                            ON a.Username = b.Username
-        WHERE b.StudentID is NULL;
+                            ON a.username = b.username
+        WHERE b.studentID is NULL;
     </select>
     <select id="selectUsername" resultType="java.lang.String">
-        select * from user where Username=#{username}
+        select * from user where username=#{username}
     </select>
 </mapper>

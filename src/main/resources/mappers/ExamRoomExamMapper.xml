@@ -18,28 +18,28 @@
 
     <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.ExamRoomExam">
         select * from examroomexam
-            INNER JOIN exam ON examroomexam.examID = exam.ExamID
-            INNER JOIN examroom ON examroomexam.examRoomID = examroom.ExamRoomID
+            INNER JOIN exam ON examroomexam.examID = exam.examID
+            INNER JOIN examroom ON examroomexam.examRoomID = examroom.examRoomID
     </select>
     <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.ExamRoomExam">
         select * from examroomexam
-                          INNER JOIN exam ON examroomexam.examID = exam.ExamID
-                          INNER JOIN examroom ON examroomexam.examRoomID = examroom.ExamRoomID
+                          INNER JOIN exam ON examroomexam.examID = exam.examID
+                          INNER JOIN examroom ON examroomexam.examRoomID = examroom.examRoomID
                  where examroomexam.ereID=#{id}
     </select>
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.ExamRoomExam">
         select * from examroomexam
-                          INNER JOIN exam ON examroomexam.examID = exam.ExamID
-                          INNER JOIN examroom ON examroomexam.examRoomID = examroom.ExamRoomID
-                 where exam.ExamName LIKE CONCAT('%', #{name}, '%')
+                          INNER JOIN exam ON examroomexam.examID = exam.examID
+                          INNER JOIN examroom ON examroomexam.examRoomID = examroom.examRoomID
+                 where exam.examName LIKE CONCAT('%', #{name}, '%')
     </select>
     <select id="selectCount" resultType="java.lang.Integer">
         select  COUNT(*) from examroomexam where examID=#{examID}
     </select>
     <select id="selectExamRoomID" resultType="java.lang.Integer">
-        SELECT ExamRoomID FROM examroomexam WHERE ExamID=#{examID} LIMIT #{start},1
+        SELECT examRoomID FROM examroomexam WHERE examID=#{examID} LIMIT #{start},1
     </select>
     <select id="selectEreID" resultType="java.lang.Integer">
-        select ereID from examroomexam WHERE ExamID=#{examID} limit #{start},1
+        select ereID from examroomexam WHERE examID=#{examID} limit #{start},1
     </select>
 </mapper>

@@ -13,72 +13,72 @@
     </insert>
     <update id="update">
         update student set
-                           Name = #{name},Gender=#{gender},Age=#{age},PhoneNumber=#{phoneNumber},Email=#{email},ExamID=#{examID},
-                           ExamRoomID=#{examRoomID},SeatID=#{seatID}
-        where StudentID=#{studentID}
+                           Name = #{name},gender=#{gender},age=#{age},phoneNumber=#{phoneNumber},email=#{email},examID=#{examID},
+                           examRoomID=#{examRoomID},seatID=#{seatID}
+        where studentID=#{studentID}
     </update>
     <update id="updateAssignSeat">
         UPDATE student
-        SET ExamRoomID = #{examRoomID}, SeatID = #{seatID}
-        WHERE ExamID=#{examID} AND ExamRoomID IS NULL AND SeatID IS NULL
+        SET examRoomID = #{examRoomID}, seatID = #{seatID}
+        WHERE examID=#{examID} AND examRoomID IS NULL AND seatID IS NULL
         LIMIT 1;
     </update>
     <update id="updateStudent">
         update student set
-                           Name = #{name},Gender=#{gender},Age=#{age},PhoneNumber=#{phoneNumber},Email=#{email}
-        where StudentID=#{studentID}
+                           name = #{name},gender=#{gender},age=#{age},phoneNumber=#{phoneNumber},email=#{email}
+        where studentID=#{studentID}
     </update>
     <update id="signUpExam">
         update student set
-                           ExamID=#{examID}
+                           examID=#{examID}
         where username=#{username}
     </update>
     <delete id="deleteOne">
-        delete from student where StudentID=#{studentID}
+        delete from student where studentID=#{studentID}
     </delete>
     <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.Student">
         select * from student
     </select>
     <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.Student">
-        select * from student where StudentID=#{id}
+        select * from student where studentID=#{id}
     </select>
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Student">
-        select * from student where Name LIKE CONCAT('%', #{name}, '%')
+        select * from student where name LIKE CONCAT('%', #{name}, '%')
     </select>
     <select id="selectStudentOfExamRoom" resultType="com.example.ncre_system_idea.pojo.Student">
-        select * from student where ExamID=#{examID} and ExamRoomID=#{examRoomID}
+        select * from student where examID=#{examID} and examRoomID=#{examRoomID}
     </select>
     <select id="checkStudent" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM student WHERE ExamID is NOT NULL AND ExamRoomID IS NULL AND SeatID is NULL
+        SELECT COUNT(*) FROM student WHERE examID is NOT NULL AND examRoomID IS NULL AND seatID is NULL
     </select>
     <select id="selectStudentByUsername" resultType="com.example.ncre_system_idea.pojo.Student">
-        select * from student where Username=#{username}
+        select * from student where username=#{username}
     </select>
     <select id="getIsSignUp" resultType="java.lang.String">
-        select examID from student where Username=#{username}
+        select examID from student where username=#{username}
     </select>
     <select id="selectSingUpOverStudent" resultMap="selectSingUpOverStudentMap">
-        select * from student where Username=#{username}
+        select * from student where username=#{username}
     </select>
     <resultMap id="selectSingUpOverStudentMap" type="com.example.ncre_system_idea.pojo.Student">
-        <id property="studentID" column="StudentID"></id>
-        <result property="name" column="Name"></result>
-        <result property="gender" column="Gender"></result>
-        <result property="age" column="Age"></result>
-        <result property="phoneNumber" column="PhoneNumber"></result>
-        <result property="email" column="Email"></result>
-        <result property="examID" column="ExamID"></result>
-        <result property="examRoomID" column="ExamRoomID"></result>
-        <result property="seatID" column="SeatID"></result>
-        <result property="username" column="Username"></result>
-        <association property="exam" column="ExamID" select="selectExam" javaType="com.example.ncre_system_idea.pojo.Exam"></association>
-        <association property="examRoom" column="ExamRoomID" select="selectExamRoom" javaType="com.example.ncre_system_idea.pojo.ExamRoom">
+        <id property="studentID" column="studentID"></id>
+        <result property="name" column="name"></result>
+        <result property="gender" column="gender"></result>
+        <result property="age" column="age"></result>
+        <result property="phoneNumber" column="phoneNumber"></result>
+        <result property="email" column="email"></result>
+        <result property="examID" column="examID"></result>
+        <result property="examRoomID" column="examRoomID"></result>
+        <result property="seatID" column="seatID"></result>
+        <result property="username" column="username"></result>
+        <association property="exam" column="examID" select="selectExam" javaType="com.example.ncre_system_idea.pojo.Exam"></association>
+        <association property="examRoom" column="examRoomID" select="selectExamRoom" javaType="com.example.ncre_system_idea.pojo.ExamRoom">
         </association>
     </resultMap>
     <select id="selectExam" resultType="com.example.ncre_system_idea.pojo.Exam">
-        select * from exam where ExamID=#{ExamID}
+        select * from exam where examID=#{examID}
     </select>
     <select id="selectExamRoom" resultType="com.example.ncre_system_idea.pojo.ExamRoom">
-        select * from examroom where ExamRoomID=#{ExamRoomID}
+        select * from examroom where examRoomID=#{examRoomID}
     </select>
 </mapper>

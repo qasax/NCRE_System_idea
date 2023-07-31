@@ -1,5 +1,6 @@
 package com.example.ncre_system_idea.DAO;
 
+import com.example.ncre_system_idea.pojo.Proctor;
 import com.example.ncre_system_idea.pojo.Student;
 import com.example.ncre_system_idea.pojo.User;
 import org.apache.ibatis.annotations.Param;
@@ -19,7 +20,7 @@ public interface UserDAO {
     int update(User user);
     int addOne(User user);
 
-    List<User> findProctors();//查询用户表中没有对应信息的监考员
+    List<Proctor> findProctors();//查询用户表中没有对应信息的监考员
     List<Student> findStudents();//查找用户表中没有对应信息的考生
     String selectUsername(@Param("username") String username);//查询是否有重名的用户名
 }

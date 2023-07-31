@@ -4,6 +4,7 @@ import com.example.ncre_system_idea.Service.LoginService;
 import com.example.ncre_system_idea.pojo.Admin;
 import com.example.ncre_system_idea.pojo.LoginBody;
 import com.example.ncre_system_idea.pojo.User;
+import com.example.ncre_system_idea.tils.AesUtil;
 import com.example.ncre_system_idea.tils.IdentifyCodeUtils;
 
 import javax.servlet.http.HttpServletResponse;
@@ -48,26 +49,20 @@ public class LoginController {
             System.out.println("验证码正确");
             //进行登录判断的逻辑大家自己写，这里就不演示了
             User user=loginService.selectOne(loginBody.getLoginName());
-            if(user !=null &&Objects.equals(user.getPassword(), loginBody.getPassword() )) {
-                session.setAttribute("isLoginStatus", true);
-                session.setAttribute("loginName",loginBody.getLoginName());
-                session.setAttribute("userType",user.getUserType());
-                session.setAttribute("password",loginBody.getPassword());
-                return "登录成功";
+            if(user!=null){
+               String realpassword= AesUtil.decryptAes(user.getPassword(),user.getAesKey());//对数据库中的密码进行解密，获取真正的密码以进行比对
+                if(Objects.equals(realpassword,loginBody.getPassword())){
+                    session.setAttribute("isLoginStatus", true);
+                    session.setAttribute("loginName",loginBody.getLoginName());
+                    session.setAttribute("userType",user.getUserType());
+                    session.setAttribute("password",loginBody.getPassword());
+                    return "登录成功";
+                }else {
+                    return "用户名或密码错误";
+                }
             }else {
                 return "用户名或密码错误";
             }
-
-
-     /*       if(admin != null) {
-                if(Objects.equals(admin.getPassword(), loginBody.getPassword())){
-                    session.setAttribute("isLoginStatus", true);
-                    return "登录成功";
-                }
-               else {
-                    return "用户名或者密码错误";
-                }*/
-
         }else{
             System.out.println("验证码错误");
             //重定向到登录画面

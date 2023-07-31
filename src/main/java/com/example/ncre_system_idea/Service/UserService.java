@@ -1,8 +1,10 @@
 package com.example.ncre_system_idea.Service;
 
 import com.example.ncre_system_idea.DAO.UserDAO;
+import com.example.ncre_system_idea.pojo.Proctor;
 import com.example.ncre_system_idea.pojo.Student;
 import com.example.ncre_system_idea.pojo.User;
+import com.example.ncre_system_idea.tils.AesUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +96,11 @@ public class UserService {
         }
     }
 
-    public String addOne(User user) {
+    public String addOne(User user) {//采用aes加密算法对密码进行加密
+        String aesKey=AesUtil.generateAESKey();
+        String password=AesUtil.encryptAes(user.getPassword(),aesKey);
+        user.setPassword(password);
+        user.setAesKey(aesKey);
         int line=   userDAO.addOne(user);
         if(line!=0){
             return "success";
@@ -104,7 +110,7 @@ public class UserService {
         }
     }
 
-    public List<User> findProctors() {
+    public List<Proctor> findProctors() {
         return  userDAO.findProctors();
     }
     public List<Student> findStudents() {

@@ -8,11 +8,11 @@
     </insert>
     <update id="update">
         update exam set
-                            ExamName=#{examName},ExamDate=#{examDate},ExamTime=#{examTime},ExamLocation=#{examLocation}
-        where ExamID=#{examID}
+                            examName=#{examName},examDate=#{examDate},examTime=#{examTime},examLocation=#{examLocation}
+        where examID=#{examID}
     </update>
     <delete id="deleteOne">
-        delete from exam where ExamID=#{examID}
+        delete from exam where examID=#{examID}
     </delete>
 
 
@@ -20,16 +20,16 @@
         select * from exam
     </select>
     <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.Exam">
-        select * from exam where ExamID=#{id}
+        select * from exam where examID=#{id}
     </select>
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Exam">
-        select * from exam where exam.ExamName LIKE CONCAT('%', #{name}, '%')
+        select * from exam where exam.examName LIKE CONCAT('%', #{name}, '%')
     </select>
     <select id="selectCount" resultType="java.lang.Integer">
         select COUNT(*) from exam
     </select>
     <select id="selectExamID" resultType="java.lang.Integer">
-        SELECT ExamID FROM exam LIMIT #{start},1
+        SELECT examID FROM exam LIMIT #{start},1
     </select>
     <select id="selectAllExam" resultType="com.example.ncre_system_idea.pojo.Exam">
         select * from exam

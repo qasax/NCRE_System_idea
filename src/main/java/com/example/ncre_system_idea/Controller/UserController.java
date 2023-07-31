@@ -1,6 +1,7 @@
 package com.example.ncre_system_idea.Controller;
 
 import com.example.ncre_system_idea.Service.UserService;
+import com.example.ncre_system_idea.pojo.Proctor;
 import com.example.ncre_system_idea.pojo.Student;
 import com.example.ncre_system_idea.pojo.User;
 import com.github.pagehelper.PageInfo;
@@ -44,7 +45,7 @@ public class UserController {
     }
     @RequestMapping("/findProctors")//寻找数据库中user表没有对应信息的proctor
     @ResponseBody
-    public List<User> findProctors(){
+    public List<Proctor> findProctors(){
 
         return userService.findProctors();
     }

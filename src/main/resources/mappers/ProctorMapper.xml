@@ -8,16 +8,16 @@
     </insert>
     <update id="update">
     update proctors set
-            TeacherName=#{teacherName},Age=#{age},Gender=#{gender},PhoneNumber=#{phoneNumber},Email=#{email}
-            where ProctorID=#{proctorID}
+            teacherName=#{teacherName},age=#{age},gender=#{gender},phoneNumber=#{phoneNumber},email=#{email}
+            where proctorID=#{proctorID}
     </update>
     <update id="updateProctor">
         update proctors set
-                            TeacherName=#{teacherName},Age=#{age},Gender=#{gender},PhoneNumber=#{phoneNumber},Email=#{email}
-        where ProctorID=#{proctorID}
+                            teacherName=#{teacherName},age=#{age},gender=#{gender},phoneNumber=#{phoneNumber},email=#{email}
+        where proctorID=#{proctorID}
     </update>
     <delete id="deleteOne">
-        delete from proctors where ProctorID=#{proctorID}
+        delete from proctors where proctorID=#{proctorID}
     </delete>
 
 
@@ -25,10 +25,10 @@
         select * from proctors
     </select>
     <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.Proctor">
-        select * from proctors where ProctorID =#{id}
+        select * from proctors where proctorID =#{id}
     </select>
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.Proctor">
-        select * from proctors where TeacherName LIKE CONCAT('%', #{name}, '%')
+        select * from proctors where teacherName LIKE CONCAT('%', #{name}, '%')
     </select>
     <select id="selectIt" resultType="com.example.ncre_system_idea.pojo.Proctor">
         SELECT proctors.* FROM proctors
@@ -37,35 +37,35 @@
                                 FROM ereproctors LEFT JOIN examroomexam
                                                            ON ereproctors.ereID=examroomexam.ereID WHERE examID=#{examID})
                                    AS b
-                               ON proctors.ProctorID= b.ProctorID
+                               ON proctors.proctorID= b.proctorID
         WHERE ereID is NULL
     </select>
     <select id="selectOne" resultType="java.lang.String">
-        select ProctorID from proctors limit #{start},1
+        select proctorID from proctors limit #{start},1
     </select>
     <select id="selectProctorByUsername" resultType="com.example.ncre_system_idea.pojo.Proctor">
-        select  * from proctors where Username=#{username}
+        select  * from proctors where username=#{username}
     </select>
     <select id="selectExamMsgByUsername" resultMap="selectExamMsg">
-        select * from proctors left join ereproctors on proctors.ProctorID =ereproctors.proctorID
+        select * from proctors left join ereproctors on proctors.proctorID =ereproctors.proctorID
             LEFT JOIN examroomexam ON ereproctors.ereID=examroomexam.ereID
-                 WHERE Username =#{username}
+                 WHERE username =#{username}
     </select>
     <resultMap id="selectExamMsg" type="com.example.ncre_system_idea.pojo.Proctor">
-        <id property="proctorID" column="ProctorID"></id>
-        <result property="teacherName" column="TeacherName"></result>
-        <result property="age" column="Age"></result>
-        <result property="gender" column="Gender"></result>
-        <result property="phoneNumber" column="PhoneNumber"></result>
-        <result property="email" column="Email"></result>
-        <result property="username" column="Username"></result>
-        <association property="exam" javaType="com.example.ncre_system_idea.pojo.Exam" select="selectExam" column="ExamID"></association>
+        <id property="proctorID" column="proctorID"></id>
+        <result property="teacherName" column="teacherName"></result>
+        <result property="age" column="age"></result>
+        <result property="gender" column="gender"></result>
+        <result property="phoneNumber" column="phoneNumber"></result>
+        <result property="email" column="email"></result>
+        <result property="username" column="username"></result>
+        <association property="exam" javaType="com.example.ncre_system_idea.pojo.Exam" select="selectExam" column="examID"></association>
         <association property="examRoom" javaType="com.example.ncre_system_idea.pojo.ExamRoom" select="selectExamRoom" column="examRoomID"></association>
     </resultMap>
     <select id="selectExam" resultType="com.example.ncre_system_idea.pojo.Exam">
-        select * from  exam where ExamID=#{ExamID}
+        select * from  exam where examID=#{examID}
     </select>
     <select id="selectExamRoom" resultType="com.example.ncre_system_idea.pojo.ExamRoom">
-        select * from  examroom where ExamRoomID=#{examRoomID}
+        select * from  examroom where examRoomID=#{examRoomID}
     </select>
 </mapper>
