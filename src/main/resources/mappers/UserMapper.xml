@@ -11,6 +11,11 @@
                            username = #{username},password=#{password},aesKey=#{aesKey},userType=#{userType}
         where userID=#{userID}
     </update>
+    <update id="changPassword">
+        update user set
+                        password=#{password},aesKey=#{aesKey}
+        where username=#{username}
+    </update>
     <delete id="deleteOne">
         delete from user where userID=#{userID}
     </delete>

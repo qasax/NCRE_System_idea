@@ -128,4 +128,9 @@ public class UserService {
        }else
            return Integer.parseInt(line);
     }
+    public int changPassword(String password,String username){
+        String aesKey=AesUtil.generateAESKey();
+        password=AesUtil.encryptAes(password,aesKey);
+       return userDAO.changPassword(password,aesKey,username);
+    }
 }
