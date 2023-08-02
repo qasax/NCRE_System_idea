@@ -16,11 +16,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
 //       下面这句代码相当于添加一个拦截器   添加的拦截器就是我们刚刚创建的
         registry.addInterceptor(new LoginInterceptor())
 //       addPathPatterns()配置我们要拦截哪些路径 addPathPatterns("/**")表示拦截所有请求，包括我们的静态资源
-                .addPathPatterns()
+                .addPathPatterns("/**")
 //       excludePathPatterns()表示我们要放行哪些（表示不用经过拦截器）
 //       excludePathPatterns("/","/login")表示放行“/”与“/login”请求
 //       如果有静态资源的时候可以在这个地方放行
-                .excludePathPatterns("/identifyImage","/login","/sessionState","/logout","/getSessionUser");
+                .excludePathPatterns("/error","/file/getImage","/identifyImage","/login","/sessionState","/logout","/getSessionUser","/student/registerOne","/user/addOne","/addOne","/user/selectUsername","/green.jpg");
     }
 
 }

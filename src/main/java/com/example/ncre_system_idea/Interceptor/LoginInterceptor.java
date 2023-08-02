@@ -28,7 +28,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //      获取进过拦截器的路径
         String requestURI = request.getRequestURI();
-
+        System.out.println("拦截路径"+requestURI);
         //      登录检查逻辑
         HttpSession session = request.getSession();
         Object isLoginStatus =  session.getAttribute("isLoginStatus");
@@ -37,7 +37,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.setContentType("application/json;charset=UTF-8");
             response.setStatus(401);
             response.getWriter().write("用户已经离线，请重新登录");
-
+            System.out.println("拦截器拦截请求");
             return false;
         }
 //
