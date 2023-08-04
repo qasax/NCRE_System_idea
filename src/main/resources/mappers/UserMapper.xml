@@ -21,13 +21,13 @@
     </delete>
 
     <select id="selectAll" resultType="com.example.ncre_system_idea.pojo.User">
-        select userID, username, password, userType from user
+        select * from user
     </select>
     <select id="selectAllById" resultType="com.example.ncre_system_idea.pojo.User">
-        select userID, username, password, userType from user where userID=#{id}
+        select * from user where userID=#{id}
     </select>
     <select id="selectAllByName" resultType="com.example.ncre_system_idea.pojo.User">
-        select userID, username, password, userType from user where username LIKE CONCAT('%', #{name}, '%')
+        select * from user where username LIKE CONCAT('%', #{name}, '%')
     </select>
     <select id="findProctors" resultType="com.example.ncre_system_idea.pojo.Proctor">
         SELECT a.userID , a.username , b.proctorID

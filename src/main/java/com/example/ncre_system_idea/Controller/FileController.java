@@ -93,6 +93,37 @@ public class FileController {
     public String examRoomUpload(@RequestParam MultipartFile file) throws IOException {
         return fileService.examRoomUpload(file);
     }
+    @RequestMapping("/userDown")//下载exam表格
+    public ResponseEntity<byte[]> userDown() throws
+            IOException {
+        return fileService.userDown();
+    }
 
+    @RequestMapping("/userUpload")
+    @ResponseBody
+    public String userUpload(@RequestParam MultipartFile file) throws IOException {
+        return fileService.userUpload(file);
+    }
+    @RequestMapping("/examRoomExamDown")//下载exam表格
+    public ResponseEntity<byte[]> examRoomExamDown() throws
+            IOException {
+        return fileService.examRoomExamDown();
+    }
+
+    @RequestMapping("/examRoomExamUpload")
+    @ResponseBody
+    public String examRoomExamUpload(@RequestParam MultipartFile file) throws IOException {
+        return fileService.examRoomExamUpload(file);
+    }
+    @RequestMapping("/ereProctorDown")//下载exam表格
+    public ResponseEntity<byte[]> ereProctorDown() throws
+            IOException {
+        return fileService.ereProctorDown();
+    }
+    @RequestMapping("/studentOfExamRoomDown")//下载exam表格
+    public ResponseEntity<byte[]> studentOfExamRoomDown(int examID,int examRoomID) throws
+            IOException {
+        return fileService.studentOfExamRoomDown(examID,examRoomID);
+    }
 }
 

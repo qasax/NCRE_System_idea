@@ -1,4 +1,4 @@
-package com.example.ncre_system_idea.tils;
+package com.example.ncre_system_idea.Config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
