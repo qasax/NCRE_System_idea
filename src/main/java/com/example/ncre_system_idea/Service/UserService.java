@@ -4,7 +4,7 @@ import com.example.ncre_system_idea.DAO.UserDAO;
 import com.example.ncre_system_idea.pojo.Proctor;
 import com.example.ncre_system_idea.pojo.Student;
 import com.example.ncre_system_idea.pojo.User;
-import com.example.ncre_system_idea.tils.AesUtil;
+import com.example.ncre_system_idea.Utils.AesUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

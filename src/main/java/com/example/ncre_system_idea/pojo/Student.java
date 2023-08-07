@@ -1,5 +1,6 @@
 package com.example.ncre_system_idea.pojo;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.example.ncre_system_idea.DAO.ExamDAO;
 import lombok.*;
@@ -26,10 +27,15 @@ public class Student {
     private String email;
  @ExcelProperty("考试ID")
     private int examID;
+    @ExcelProperty("教室ID")
     private int examRoomID;
-    private int seatID;
+    @ExcelProperty("座号")
+    private int seatCount;
+    @ExcelProperty("用户名")
     private String username;
+    @ExcelIgnore
     private Exam exam;
+    @ExcelIgnore
     private ExamRoom examRoom;
 }
 //学生实体

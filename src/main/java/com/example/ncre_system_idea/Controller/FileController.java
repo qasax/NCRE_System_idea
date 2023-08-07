@@ -48,10 +48,10 @@ public class FileController {
     FileService fileService;
 
     @RequestMapping("/examDown")//下载exam表格
-    public ResponseEntity<byte[]> examDown(HttpSession session) throws
+    public ResponseEntity<byte[]> examDown() throws
             IOException {
 
-        return fileService.examDown(session);
+        return fileService.examDown();
     }
 
     @RequestMapping("/examUpload")
@@ -61,9 +61,9 @@ public class FileController {
     }
 
     @RequestMapping("/studentDown")//下载exam表格
-    public ResponseEntity<byte[]> studentDown(HttpSession session) throws
+    public ResponseEntity<byte[]> studentDown() throws
             IOException {
-        return fileService.studentDown(session);
+        return fileService.studentDown();
     }
     @RequestMapping("/studentUpload")
     @ResponseBody
@@ -72,9 +72,9 @@ public class FileController {
     }
 
     @RequestMapping("/proctorDown")//下载exam表格
-    public ResponseEntity<byte[]> proctorDown(HttpSession session) throws
+    public ResponseEntity<byte[]> proctorDown() throws
             IOException {
-        return fileService.proctorDown(session);
+        return fileService.proctorDown();
     }
 
     @RequestMapping("/proctorUpload")
@@ -83,9 +83,9 @@ public class FileController {
         return fileService.proctorUpload(file);
     }
     @RequestMapping("/examRoomDown")//下载exam表格
-    public ResponseEntity<byte[]> examRoomDown(HttpSession session) throws
+    public ResponseEntity<byte[]> examRoomDown() throws
             IOException {
-        return fileService.examRoomDown(session);
+        return fileService.examRoomDown();
     }
 
     @RequestMapping("/examRoomUpload")

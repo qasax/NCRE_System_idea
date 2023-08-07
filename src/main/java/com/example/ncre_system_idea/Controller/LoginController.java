@@ -1,11 +1,10 @@
 package com.example.ncre_system_idea.Controller;
 
 import com.example.ncre_system_idea.Service.LoginService;
-import com.example.ncre_system_idea.pojo.Admin;
 import com.example.ncre_system_idea.pojo.LoginBody;
 import com.example.ncre_system_idea.pojo.User;
-import com.example.ncre_system_idea.tils.AesUtil;
-import com.example.ncre_system_idea.tils.IdentifyCodeUtils;
+import com.example.ncre_system_idea.Utils.AesUtil;
+import com.example.ncre_system_idea.Utils.IdentifyCodeUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;

@@ -1,4 +1,4 @@
-package com.example.ncre_system_idea.tils;
+package com.example.ncre_system_idea.Utils;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.imageio.ImageIO;
