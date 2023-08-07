@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 /**
  * 登录检查
@@ -32,6 +33,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         //      登录检查逻辑
         HttpSession session = request.getSession();
         Object isLoginStatus =  session.getAttribute("isLoginStatus");
+        Object userType = session.getAttribute("userType");
         System.out.println("拦截器判断用户是否登录"+isLoginStatus);
         if(isLoginStatus==null){//如果为null就说明该用户没有登录
             response.setContentType("application/json;charset=UTF-8");
@@ -40,7 +42,49 @@ public class LoginInterceptor implements HandlerInterceptor {
             System.out.println("拦截器拦截请求");
             return false;
         }
-//
+        //用户授权，限制不同类型用户所能访问的api
+        if(Objects.equals(userType,"proctor")){
+            //只能访问以下请求，其他请求拦截
+            String[] proctorUrls = {
+                    "/selectExamMsgByUsername",
+                    "/autoAssignController/getSignUpOverStatus",
+                    "/user/changPassword",
+                    "/selectProctorByUsername"
+            };
+
+            for (String url : proctorUrls) {
+                if (Objects.equals(requestURI, url)) {
+                }else {
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.setStatus(401);
+                    response.getWriter().write("没有访问权限！");
+                    System.out.println("拦截器拦截无权限请求"+requestURI);
+                    return false;
+                }
+            }
+        }
+        if(Objects.equals(userType,"student")){
+            String[] studentUrls = {
+                    "/student/selectStudentByUsername",
+                    "/student/updateStudent",
+                    "/autoAssignController/getSignUpOverStatus",
+                    "/autoAssignController/getSignUpStatus",
+                    "/student/getIsSignUp",
+                    "/student/selectSingUpOverStudent",
+                    "/exam/selectAllExam"
+            };
+
+            for (String url : studentUrls) {
+                if (Objects.equals(requestURI, url)) {
+                }else{
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.setStatus(401);
+                    response.getWriter().write("没有访问权限！");
+                    System.out.println("拦截器拦截无权限请求"+requestURI);
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
