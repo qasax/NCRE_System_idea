@@ -49,7 +49,8 @@ public class LoginInterceptor implements HandlerInterceptor {
                     "/selectExamMsgByUsername",
                     "/autoAssignController/getSignUpOverStatus",
                     "/user/changPassword",
-                    "/selectProctorByUsername"
+                    "/selectProctorByUsername",
+                    "/file/upload"
             };
 
             for (String url : proctorUrls) {
@@ -71,7 +72,9 @@ public class LoginInterceptor implements HandlerInterceptor {
                     "/autoAssignController/getSignUpStatus",
                     "/student/getIsSignUp",
                     "/student/selectSingUpOverStudent",
-                    "/exam/selectAllExam"
+                    "/user/changPassword",
+                    "/exam/selectAllExam",
+                    "/file/upload"
             };
 
             for (String url : studentUrls) {
