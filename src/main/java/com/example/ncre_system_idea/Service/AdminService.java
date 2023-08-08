@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class AdminService {
     @Autowired
     AdminDAO adminDAO;
-    public Admin selectAdminByusername(String username){
-       return adminDAO.selectAdminByusername(username);
+    public Admin selectAdminByUsername(String username){
+       return adminDAO.selectAdminByUsername(username);
     }
     public String updateStudent(Admin admin){
         int line= adminDAO.updateStudent(admin);

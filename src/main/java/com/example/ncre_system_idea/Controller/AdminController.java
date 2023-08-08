@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AdminController {
     @Autowired
     AdminService adminService;
-    @RequestMapping("/selectAdminByusername")
+    @RequestMapping("/selectAdminByUsername")
     @ResponseBody
-    public Admin selectAdminByusername(String username){
-        return adminService.selectAdminByusername(username);
+    public Admin selectAdminByUsername(String username){
+        return adminService.selectAdminByUsername(username);
     }
     @RequestMapping("/updateAdmin")
     @ResponseBody

@@ -7,7 +7,7 @@
         update admin set name=#{name},gender=#{gender},age=#{age},phoneNumber=#{phoneNumber},email=#{email}
         where adminID=#{adminID}
     </update>
-    <select id="selectAdminByusername" resultType="com.example.ncre_system_idea.pojo.Admin">
+    <select id="selectAdminByUsername" resultType="com.example.ncre_system_idea.pojo.Admin">
         select  * from admin where username=#{username}
 </select>
 </mapper>
