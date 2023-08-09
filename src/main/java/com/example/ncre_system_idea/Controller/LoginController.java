@@ -21,7 +21,11 @@ import java.util.Objects;
 public class LoginController {
     @Autowired
     LoginService loginService;
-
+    /**
+     * 为需要登录的用户响应一个验证码
+     *
+     * @return
+     */
     @GetMapping("/identifyImage")
     @ResponseBody//
     public void identifyImage(HttpServletResponse response, HttpSession session) {//创建随机验证码
@@ -36,7 +40,11 @@ public class LoginController {
         utils.responseIdentifyImg(identifyImage, response);
 
     }
-
+    /**
+     * 为用户提供登录api接口
+     *
+     * @return
+     */
     @PostMapping("/login")
     @ResponseBody
     public String login(@RequestBody LoginBody loginBody, HttpSession session) {
@@ -95,7 +103,11 @@ public class LoginController {
         }
 
     }
-
+    /**
+     * 响应用户是否处于登录状态
+     *
+     * @return
+     */
     @RequestMapping("/sessionState")
     @ResponseBody
     public boolean login(HttpSession session) {
@@ -105,7 +117,11 @@ public class LoginController {
         }
         return false;
     }
-
+    /**
+     * 为用户提供登出api
+     *
+     * @return
+     */
     @RequestMapping("/logout")
     @ResponseBody
     public String logout(HttpSession session) {
@@ -113,7 +129,11 @@ public class LoginController {
         session.invalidate();
         return "ok";
     }
-
+    /**
+     * 响应用户储存在session的信息
+     *
+     * @return
+     */
     @RequestMapping("/getSessionUser")
     @ResponseBody
     public User getSessionUser(HttpSession session) {

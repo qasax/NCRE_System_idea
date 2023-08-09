@@ -1,5 +1,6 @@
-package com.example.ncre_system_idea.Interceptor;
+package com.example.ncre_system_idea.Config;
 
+import com.example.ncre_system_idea.Interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

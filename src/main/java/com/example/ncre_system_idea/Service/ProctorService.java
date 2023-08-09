@@ -105,6 +105,15 @@ public class ProctorService {
             return "wrong";
         }
     }
+    public String registerOne(Proctor proctor) {
+        int line=   proctorDAO.registerOne(proctor);
+        if(line!=0){
+            return "success";
+        }else
+        {
+            return "wrong";
+        }
+    }
     public List<Proctor> selectIt(String examId) {
         return proctorDAO.selectIt(examId);
 

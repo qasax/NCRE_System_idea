@@ -13,11 +13,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AdminController {
     @Autowired
     AdminService adminService;
+    /**
+     * 根据用户名查询管理员的个人信息
+     *
+     * @return
+     */
     @RequestMapping("/selectAdminByUsername")
     @ResponseBody
     public Admin selectAdminByUsername(String username){
         return adminService.selectAdminByUsername(username);
     }
+    /**
+     * 根据id，更新管理员的个人信息
+     *
+     * @return
+     */
     @RequestMapping("/updateAdmin")
     @ResponseBody
     public String updateStudent(@RequestBody Admin admin){

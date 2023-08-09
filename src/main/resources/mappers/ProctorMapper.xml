@@ -6,6 +6,9 @@
     <insert id="addOne">
         insert into proctors values (null,#{teacherName},#{age},#{gender},#{phoneNumber},#{email},#{username})
     </insert>
+    <insert id="registerOne">
+        insert into proctors values (null,#{teacherName},#{age},#{gender},#{phoneNumber},#{email},#{username})
+    </insert>
     <update id="update">
     update proctors set
             teacherName=#{teacherName},age=#{age},gender=#{gender},phoneNumber=#{phoneNumber},email=#{email}

@@ -20,6 +20,11 @@ public class AutoAssignController {
     @Autowired
     SignUpStatusDAO signUpStatusDAO;
 
+    /**
+     * 为考生自动分配考场
+     *
+     * @return
+     */
     @RequestMapping("/autoAssignStudent")
     @ResponseBody
     public String autoAssignStudent() {
@@ -27,18 +32,35 @@ public class AutoAssignController {
 
     }
 
+    /**
+     * 为监考员自动分配监考考场
+     * 要在考生分配考场完毕后运行
+     *
+     * @return
+     */
     @RequestMapping("/autoAssignProctor")
     @ResponseBody
     public List<String> AutoAssignProctor() {
         return autoAssignService.AutoAssignProctor();
     }
 
+    /**
+     * 获取当前报名状态
+     * 当前是否可以报名
+     *
+     * @return
+     */
     @RequestMapping("/getSignUpStatus")
     @ResponseBody
     public boolean getSignUpStatus() {
         return signUpStatusDAO.selectSignUpStatus();
     }
 
+    /**
+     * 更改报名状态
+     *
+     * @return
+     */
     @RequestMapping("/setSignUpStatus")
     @ResponseBody
     public String setSignUpStatus(boolean status) {
@@ -51,36 +73,66 @@ public class AutoAssignController {
 
     }
 
+    /**
+     * 获取当前考生分配考场的状态
+     *
+     * @return
+     */
     @RequestMapping("/getAssignStudentStatus")
     @ResponseBody
     public boolean getAssignStudentStatus() {
         return signUpStatusDAO.selectAssignStudentStatus();
     }
 
+    /**
+     * 更新当前考生分配考场的状态
+     *
+     * @return
+     */
     @RequestMapping("/setAssignStudentStatus")
     @ResponseBody
     public int setAssignStudentStatus(boolean status) {
         return signUpStatusDAO.updateAssignStudentStatus(status);
     }
 
+    /**
+     * 获取当前监考员分配考场的状态
+     *
+     * @return
+     */
     @RequestMapping("/getAssignProctorStatus")
     @ResponseBody
     public boolean getAssignProctorStatus() {
         return signUpStatusDAO.selectAssignProctorStatus();
     }
 
+    /**
+     * 更新当前监考员分配考场的状态
+     *
+     * @return
+     */
     @RequestMapping("/setAssignProctorStatus")
     @ResponseBody
     public int setAssignProctorStatus(boolean status) {
         return signUpStatusDAO.updateAssignProctorStatus(status);
     }
 
+    /**
+     * 获取当前分配工作是否结束的状态
+     *
+     * @return
+     */
     @RequestMapping("/getSignUpOverStatus")
     @ResponseBody
     public boolean getSignUpOverStatus() {
         return signUpStatusDAO.selectSignUpOverStatus();
     }
 
+    /**
+     * 更新当前分配工作是否结束的状态
+     *
+     * @return
+     */
     @RequestMapping("/setSignUpOverStatus")
     @ResponseBody
     public int setSignUpOverStatus(boolean status) {

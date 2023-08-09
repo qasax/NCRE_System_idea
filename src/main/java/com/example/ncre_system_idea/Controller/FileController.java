@@ -16,6 +16,11 @@ import java.io.*;
 @Slf4j
 public class FileController {
     //头像上传
+    /**
+     * 用户头像的上传
+     *
+     * @return
+     */
     @PostMapping("/upload")
     @ResponseBody
     public String upload(@RequestParam MultipartFile file, HttpSession session) throws Exception {
@@ -31,6 +36,11 @@ public class FileController {
     }
 
     //返回前台头像
+    /**
+     * 向前台返回对应用户的头像
+     *
+     * @return
+     */
     @GetMapping(value = "/getImage", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] getImage(HttpSession session) throws Exception {
@@ -46,14 +56,22 @@ public class FileController {
 
     @Autowired
     FileService fileService;
-
+    /**
+     * 为用户提供exam表对应表格下载
+     *
+     * @return
+     */
     @RequestMapping("/examDown")//下载exam表格
     public ResponseEntity<byte[]> examDown() throws
             IOException {
 
         return fileService.examDown();
     }
-
+    /**
+     * 接受用户exam表格的上传，并且存入数据库
+     *
+     * @return
+     */
     @RequestMapping("/examUpload")
     @ResponseBody
     public String examUpload(@RequestParam MultipartFile file) throws IOException {
