@@ -48,45 +48,60 @@ public class LoginInterceptor implements HandlerInterceptor {
             String[] proctorUrls = {
                     "/selectExamMsgByUsername",
                     "/autoAssignController/getSignUpOverStatus",
+                    "/autoAssignController/getAssignOverStatus",
                     "/user/changPassword",
                     "/selectProctorByUsername",
-                    "/file/upload"
-            };
+                    "/file/upload",
 
+            };
+            boolean releaseFlag=false;
             for (String url : proctorUrls) {
                 if (Objects.equals(requestURI, url)) {
-                }else {
-                    response.setContentType("application/json;charset=UTF-8");
-                    response.setStatus(401);
-                    response.getWriter().write("没有访问权限！");
-                    System.out.println("拦截器拦截无权限请求"+requestURI);
-                    return false;
+                    releaseFlag=true;
                 }
+            }
+            if (releaseFlag==true){
+                System.out.println("拦截器放行监考员权限请求"+requestURI);
+                return true;
+            }else {
+                response.setContentType("application/json;charset=UTF-8");
+                response.setStatus(401);
+                response.getWriter().write("监考员没有该访问权限！");
+                System.out.println("拦截器拦截监考员无权限请求"+requestURI);
+                return false;
             }
         }
         if(Objects.equals(userType,"student")){
             String[] studentUrls = {
                     "/student/selectStudentByUsername",
                     "/student/updateStudent",
+                    "/autoAssignController/getAssignOverStatus",
                     "/autoAssignController/getSignUpOverStatus",
                     "/autoAssignController/getSignUpStatus",
                     "/student/getIsSignUp",
                     "/student/selectSingUpOverStudent",
                     "/user/changPassword",
                     "/exam/selectAllExam",
-                    "/file/upload"
+                    "/file/upload",
+                    "/student/signUpExam" ,
             };
-
+            boolean releaseFlag=false;
             for (String url : studentUrls) {
                 if (Objects.equals(requestURI, url)) {
-                }else{
-                    response.setContentType("application/json;charset=UTF-8");
-                    response.setStatus(401);
-                    response.getWriter().write("没有访问权限！");
-                    System.out.println("拦截器拦截无权限请求"+requestURI);
-                    return false;
+                    releaseFlag=true;
                 }
             }
+            if (releaseFlag==true){
+                System.out.println("拦截器放行考生权限请求"+requestURI);
+                return true;
+            }else {
+                response.setContentType("application/json;charset=UTF-8");
+                response.setStatus(401);
+                response.getWriter().write("考生没有该访问权限！");
+                System.out.println("拦截器拦截考生无权限请求"+requestURI);
+                return false;
+            }
+
         }
         return true;
     }

@@ -1,12 +1,9 @@
 package com.example.ncre_system_idea.Controller;
 
-import com.example.ncre_system_idea.DAO.SignUpStatusDAO;
+import com.example.ncre_system_idea.DAO.AutoAssignStatusDAO;
 import com.example.ncre_system_idea.Service.AutoAssignService;
-import com.example.ncre_system_idea.pojo.SignUpStatus;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,7 +15,7 @@ public class AutoAssignController {
     @Autowired
     AutoAssignService autoAssignService;
     @Autowired
-    SignUpStatusDAO signUpStatusDAO;
+    AutoAssignStatusDAO autoAssignStatusDAO;
 
     /**
      * 为考生自动分配考场
@@ -53,7 +50,7 @@ public class AutoAssignController {
     @RequestMapping("/getSignUpStatus")
     @ResponseBody
     public boolean getSignUpStatus() {
-        return signUpStatusDAO.selectSignUpStatus();
+        return autoAssignStatusDAO.selectSignUpStatus();
     }
 
     /**
@@ -64,11 +61,39 @@ public class AutoAssignController {
     @RequestMapping("/setSignUpStatus")
     @ResponseBody
     public String setSignUpStatus(boolean status) {
-        signUpStatusDAO.updateSignUpStatus(status);
-        if (signUpStatusDAO.selectSignUpStatus()) {
+        autoAssignStatusDAO.updateSignUpStatus(status);
+        if (autoAssignStatusDAO.selectSignUpStatus()) {
             return "已开启报名";
         } else {
             return "报名已关闭";
+        }
+
+    }
+    /**
+     * 获取当前报名结束状态
+     * 当前是否报名已结束
+     *
+     * @return
+     */
+    @RequestMapping("/getSignUpOverStatus")
+    @ResponseBody
+    public boolean getSignUpOverStatus() {
+        return autoAssignStatusDAO.selectSignUpOverStatus();
+    }
+
+    /**
+     * 更改报名结束状态
+     *
+     * @return
+     */
+    @RequestMapping("/setSignUpOverStatus")
+    @ResponseBody
+    public String setSignUpOverStatus(boolean status) {
+        autoAssignStatusDAO.updateSignUpOverStatus(status);
+        if (autoAssignStatusDAO.selectSignUpOverStatus()) {
+            return "报名已结束";
+        } else {
+            return "报名未结束";
         }
 
     }
@@ -81,7 +106,7 @@ public class AutoAssignController {
     @RequestMapping("/getAssignStudentStatus")
     @ResponseBody
     public boolean getAssignStudentStatus() {
-        return signUpStatusDAO.selectAssignStudentStatus();
+        return autoAssignStatusDAO.selectAssignStudentStatus();
     }
 
     /**
@@ -92,7 +117,7 @@ public class AutoAssignController {
     @RequestMapping("/setAssignStudentStatus")
     @ResponseBody
     public int setAssignStudentStatus(boolean status) {
-        return signUpStatusDAO.updateAssignStudentStatus(status);
+        return autoAssignStatusDAO.updateAssignStudentStatus(status);
     }
 
     /**
@@ -103,7 +128,7 @@ public class AutoAssignController {
     @RequestMapping("/getAssignProctorStatus")
     @ResponseBody
     public boolean getAssignProctorStatus() {
-        return signUpStatusDAO.selectAssignProctorStatus();
+        return autoAssignStatusDAO.selectAssignProctorStatus();
     }
 
     /**
@@ -114,7 +139,7 @@ public class AutoAssignController {
     @RequestMapping("/setAssignProctorStatus")
     @ResponseBody
     public int setAssignProctorStatus(boolean status) {
-        return signUpStatusDAO.updateAssignProctorStatus(status);
+        return autoAssignStatusDAO.updateAssignProctorStatus(status);
     }
 
     /**
@@ -122,10 +147,10 @@ public class AutoAssignController {
      *
      * @return
      */
-    @RequestMapping("/getSignUpOverStatus")
+    @RequestMapping("/getAssignOverStatus")
     @ResponseBody
-    public boolean getSignUpOverStatus() {
-        return signUpStatusDAO.selectSignUpOverStatus();
+    public boolean getAssignOverStatus() {
+        return autoAssignStatusDAO.selectAssignOverStatus();
     }
 
     /**
@@ -133,9 +158,9 @@ public class AutoAssignController {
      *
      * @return
      */
-    @RequestMapping("/setSignUpOverStatus")
+    @RequestMapping("/setAssignOverStatus")
     @ResponseBody
-    public int setSignUpOverStatus(boolean status) {
-        return signUpStatusDAO.updateSignUpOverStatus(status);
+    public int setAssignOverStatus(boolean status) {
+        return autoAssignStatusDAO.updateAssignOverStatus(status);
     }
 }

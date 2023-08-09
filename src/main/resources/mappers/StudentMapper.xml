@@ -5,7 +5,7 @@
 <mapper namespace="com.example.ncre_system_idea.DAO.StudentDAO">
     <insert id="addOne">
         insert into student values (null,#{name},#{gender},#{age},#{phoneNumber},#{email},#{examID},
-                                    #{examRoomID},#{seatCountseatCount},#{username})
+                                    #{examRoomID},#{seatID},#{username})
     </insert>
     <insert id="registerOne">
         insert into student values (null,#{name},#{gender},#{age},#{phoneNumber},#{email},null,
@@ -14,13 +14,13 @@
     <update id="update">
         update student set
                            Name = #{name},gender=#{gender},age=#{age},phoneNumber=#{phoneNumber},email=#{email},examID=#{examID},
-                           examRoomID=#{examRoomID},seatCount=#{seatCount}
+                           examRoomID=#{examRoomID},seatID=#{seatID}
         where studentID=#{studentID}
     </update>
     <update id="updateAssignSeat">
         UPDATE student
-        SET examRoomID = #{examRoomID}, seatCount = #{seatCount}
-        WHERE examID=#{examID} AND examRoomID IS NULL AND seatCount IS NULL
+        SET examRoomID = #{examRoomID}, seatID = #{seatID}
+        WHERE examID=#{examID} AND examRoomID IS NULL AND seatID IS NULL
         LIMIT 1;
     </update>
     <update id="updateStudent">
@@ -49,7 +49,7 @@
         select * from student where examID=#{examID} and examRoomID=#{examRoomID}
     </select>
     <select id="checkStudent" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM student WHERE examID is NOT NULL AND examRoomID IS NULL AND seatCount is NULL
+        SELECT COUNT(*) FROM student WHERE examID is NOT NULL AND examRoomID IS NULL AND seatID is NULL
     </select>
     <select id="selectStudentByUsername" resultType="com.example.ncre_system_idea.pojo.Student">
         select * from student where username=#{username}
@@ -69,7 +69,7 @@
         <result property="email" column="email"></result>
         <result property="examID" column="examID"></result>
         <result property="examRoomID" column="examRoomID"></result>
-        <result property="seatCount" column="seatCount"></result>
+        <result property="seatID" column="seatID"></result>
         <result property="username" column="username"></result>
         <association property="exam" column="examID" select="selectExam" javaType="com.example.ncre_system_idea.pojo.Exam"></association>
         <association property="examRoom" column="examRoomID" select="selectExamRoom" javaType="com.example.ncre_system_idea.pojo.ExamRoom">

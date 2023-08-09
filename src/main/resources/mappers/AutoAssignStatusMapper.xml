@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ncre_system_idea.DAO.AutoAssignStatusDAO">
+    <update id="updateSignUpStatus">
+        update autoassignstatus set signUpStatus=#{signUpStatus}
+    </update>
+    <update id="updateSignUpOverStatus">
+        update autoassignstatus set signUpOverStatus=#{signUpOverStatus}
+    </update>
+    <update id="updateAssignStudentStatus">
+        update autoassignstatus set assignStudentStatus=#{assignStudentStatus}
+    </update>
+    <update id="updateAssignProctorStatus">
+        update autoassignstatus set assignProctorStatus=#{assignProctorStatus}
+    </update>
+    <update id="updateAssignOverStatus">
+        update autoassignstatus set assignOverStatus=#{assignOverStatus}
+    </update>
+
+
+    <select id="selectSignUpStatus" resultType="java.lang.Boolean">
+        select signUpStatus from autoassignstatus
+    </select>
+    <select id="selectSignUpOverStatus" resultType="java.lang.Boolean">
+        select signUpOverStatus from autoassignstatus
+    </select>
+    <select id="selectAssignStudentStatus" resultType="java.lang.Boolean">
+        select assignStudentStatus from autoassignstatus
+    </select>
+    <select id="selectAssignProctorStatus" resultType="java.lang.Boolean">
+        select assignProctorStatus from autoassignstatus
+    </select>
+    <select id="selectAssignOverStatus" resultType="java.lang.Boolean">
+        select assignOverStatus from autoassignstatus
+    </select>
+
+</mapper>

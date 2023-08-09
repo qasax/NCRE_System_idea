@@ -30,7 +30,7 @@ public class Student {
     @ExcelProperty("教室ID")
     private int examRoomID;
     @ExcelProperty("座号")
-    private int seatCount;
+    private int seatID;
     @ExcelProperty("用户名")
     private String username;
     @ExcelIgnore
