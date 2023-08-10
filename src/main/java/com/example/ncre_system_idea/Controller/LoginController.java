@@ -48,6 +48,7 @@ public class LoginController {
     @PostMapping("/login")
     @ResponseBody
     public String login(@RequestBody LoginBody loginBody, HttpSession session) {
+        session.setMaxInactiveInterval(7*24*60*60);//以秒为单位设置session有效时间
         System.out.println("用户名:" + loginBody.getLoginName());
         System.out.println("密码:" + loginBody.getPassword());
         System.out.println("验证码:" + loginBody.getIdentifyCode());
