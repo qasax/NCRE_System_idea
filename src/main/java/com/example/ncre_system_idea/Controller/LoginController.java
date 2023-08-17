@@ -61,9 +61,9 @@ public class LoginController {
             //进行登录判断的逻辑大家自己写，这里就不演示了
             User user = loginService.selectOne(loginBody.getLoginName());
             System.out.println("本次为"+loginBody.getUserType()+"登录");
-            System.out.println("登录的用户账户类型是："+user.getUserType()+"账户");
             System.out.println(!loginBody.getUserType().equals(user.getUserType()));
             if (user != null) {//在java中，字符串的值进行对比必须使用equals，在javascript中则使用===即可
+                System.out.println("本次申请登录的用户，对应的账户类型是："+user.getUserType()+"账户");
                 if ( "admin".equals(loginBody.getUserType()) && loginBody.getUserType().equals(user.getUserType())) {//说明是管理员后台登录，而且账户类型是管理员，回应请求
                     String realpassword = AesUtil.decryptAes(user.getPassword(), user.getAesKey());//对数据库中的密码进行解密，获取真正的密码以进行比对
                     if (Objects.equals(realpassword, loginBody.getPassword())) {

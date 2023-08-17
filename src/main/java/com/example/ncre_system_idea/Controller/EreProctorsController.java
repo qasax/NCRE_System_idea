@@ -29,7 +29,7 @@ public class EreProctorsController {
     }
     /**
      * 根据ereID删除ereproctor表中某一条信息
-     *已经弃用
+     *删除多个
      * @return
      */
     @RequestMapping("/deleteOne")
@@ -50,7 +50,7 @@ public class EreProctorsController {
     }
     /**
      * 为某场考试的某个考场添加监考员
-     *
+     *与上一个方法组合使用
      * @return
      */
     @RequestMapping("/addOne")
