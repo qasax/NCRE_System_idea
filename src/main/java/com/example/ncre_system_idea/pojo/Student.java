@@ -2,7 +2,6 @@ package com.example.ncre_system_idea.pojo;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.example.ncre_system_idea.DAO.ExamDAO;
 import lombok.*;
 import org.springframework.stereotype.Component;
 

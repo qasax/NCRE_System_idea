@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.ncre_system_idea.DAO.AutoAssignStatusDAO">
+<mapper namespace="com.example.ncre_system_idea.dao.AutoAssignStatusDAO">
     <update id="updateSignUpStatus">
         update autoassignstatus set signUpStatus=#{signUpStatus}
     </update>
